@@ -24,6 +24,12 @@ const { title, page } = Astro.props;
     <Header title={title} />
     <slot />
   </body>
+
+  <script>
+    import { initializeLanguage } from "../../bin/language";
+
+    initializeLanguage();
+  </script>
 </html>
 
 <style is:global></style>
