@@ -28,7 +28,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
         siteData.navigation.routes.map((route, i) => (
           <a
             href={`/${route}`}
-            class={currentPath === route ? "link link_active" : "link"}
+            class={currentPath === route ? "link link__active" : "link"}
           >
             <span>{siteData.navigation.links.en[i]}</span>
           </a>
@@ -45,7 +45,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
     @apply flex items-center px-4 text-gray-300 hover:text-gray-100 hover:bg-gray-100/10 hover:shadow-bottom-light;
   }
 
-  .link_active {
+  .link__active {
     @apply text-fluo-green hover:shadow-bottom-fluo shadow-bottom-fluo hover:bg-fluo-green/10 hover:text-fluo-green;
   }
 </style>
