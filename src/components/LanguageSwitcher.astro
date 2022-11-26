@@ -2,7 +2,47 @@
 ---
 
 <div class="flex text-sm">
-  <button class="px-3 focus:outline-none">EN</button>
+  <button class="lang-btn" data-lang="en">EN</button>
   <span class="self-center">/</span>
-  <button class="px-3 focus:outline-none">RS</button>
+  <button class="lang-btn" data-lang="rs">RS</button>
 </div>
+
+<style>
+  .lang-btn {
+    @apply px-3 focus:outline-none;
+  }
+  .lang-btn__active {
+    @apply text-fluo-green;
+  }
+</style>
+
+<script>
+  import { getLanguage, setLanguage } from "../../bin/language";
+
+  const buttons = document.querySelectorAll(
+    ".lang-btn"
+  ) as NodeListOf<HTMLElement>;
+
+  const language: string = getLanguage();
+  const activeButtonClass: string = "lang-btn__active";
+
+  function removeActiveButtonClass() {
+    buttons.forEach((button) => button.classList.remove(activeButtonClass));
+  }
+
+  function initializeActiveButtonClass(button: HTMLElement) {
+    if (button.dataset.lang === language) {
+      button.classList.add(activeButtonClass);
+    }
+  }
+
+  buttons.forEach((button) => {
+    initializeActiveButtonClass(button);
+
+    button.addEventListener("click", () => {
+      setLanguage(button.dataset.lang ?? "en");
+      removeActiveButtonClass();
+      button.classList.add(activeButtonClass);
+    });
+  });
+</script>
