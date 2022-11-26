@@ -1,0 +1,51 @@
+---
+import siteData from "../../data/site_data.json";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<div
+  class="fixed inset-x-0 top-0 z-30 flex justify-center h-12 border-b-2 border-transparent md:h-16"
+>
+  <header class="flex justify-between w-full max-w-6xl px-6">
+    <a
+      href="/"
+      class="px-4 -ml-4 flex items-center text-lg hover:bg-gray-100/10"
+    >
+      <strong>{title}</strong>
+    </a>
+
+    <nav class="hidden lg:flex">
+      {
+        siteData.navigation.routes.map((route, i) => (
+          <a
+            href={`/${route}`}
+            class={currentPath === route ? "link link_active" : "link"}
+          >
+            <span>{siteData.navigation.links.en[i]}</span>
+          </a>
+        ))
+      }
+    </nav>
+
+    <LanguageSwitcher />
+  </header>
+</div>
+
+<style>
+  .link {
+    @apply flex items-center px-4 text-gray-300 hover:text-gray-100 hover:bg-gray-100/10 hover:shadow-bottom-light;
+  }
+
+  .link_active {
+    @apply text-fluo-green hover:shadow-bottom-fluo shadow-bottom-fluo hover:bg-fluo-green/10 hover:text-fluo-green;
+  }
+</style>
