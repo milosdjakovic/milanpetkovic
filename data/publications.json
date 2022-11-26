@@ -1,0 +1,55 @@
+{
+  "rs": {
+    "title": "Publikacije",
+    "titleLatest": "Zadnji članak",
+    "all": "Svi članci"
+  },
+  "en": {
+    "title": "Publications",
+    "titleLatest": "Latest article",
+    "all": "All articles"
+  },
+  "articles": [
+    {
+      "title": "MILAN PETKOVIĆ PREDSTAVIO NEOBIČNU TRODELNU MUZIČKU SLAGALICU U KOJOJ SVE POČINJE I ZAVRŠAVA SE – SA LEPTIROM U SRCU…",
+      "source": "headliner.rs",
+      "link": "https://headliner.rs/2020/05/12/milan-petkovic-predstavio-neobicnu-trodelnu-muzicku-slagalicu-u-kojoj-sve-pocinje-i-zavrsava-se-sa-leptirom-u-srcu/"
+    },
+    {
+      "title": "“POTVRDA O ŽIVOTU” MILANA PETKOVIĆA OSVOJILA REGION, A ON ZA HEADLINER KAŽE: MUZIKU MORATE DA PUSTITE DA DIŠE…",
+      "source": "headliner.rs",
+      "link": "https://headliner.rs/2019/02/22/potvrda-o-zivotu-milana-petkovica-osvojila-region-a-on-za-headliner-kaze-muziku-morate-da-pustite-da-dise/"
+    },
+    {
+      "title": "MILAN PETKOVIĆ: Potvrda o životu (Slušaj najglasnije, 2017)",
+      "source": "terapija.net",
+      "link": "http://www.terapija.net/mjuzik.asp?ID=28239"
+    },
+    {
+      "title": "MILAN PETKOVIĆ: Na obali (Slušaj najglasnije, 2016)",
+      "source": "terapija.net",
+      "link": "http://www.terapija.net/mjuzik.asp?ID=25102"
+    },
+    {
+      "title": "MILAN PETKOVIĆ: Nada (Slušaj najglasnije, 2015)",
+      "source": "terapija.net",
+      "link": "http://www.terapija.net/mjuzik.asp?ID=22708"
+    },
+    {
+      "title": "MILAN PETKOVIĆ: Utočište (Slušaj najglasnije, 2014)",
+      "source": "terapija.net",
+      "link": "http://www.terapija.net/mjuzik.asp?ID=20723"
+    },
+    {
+      "title": "MILAN PETKOVIĆ: Odraz (Slušaj najglasnije, 2013)",
+      "source": "terapija.net",
+      "link": "http://www.terapija.net/mjuzik.asp?ID=18122"
+    },
+    {
+      "title": "MILAN PETKOVIĆ TRIO: Muzička kutija (Slušaj najglasnije, 2013)",
+      "source": "terapija.net",
+      "link": "http://www.terapija.net/mjuzik.asp?ID=15794"
+    }
+    
+  ]
+}

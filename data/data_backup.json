@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "numberOfLastReleases": 3,
+    "routes": ["/", "discography", "media", "biography"],
+    "albumCovers": [
+      "leptir",
+      "u_srcu",
+      "do_kraja_sveta",
+      "potvrda_o_zivotu",
+      "na_obali",
+      "nada",
+      "utociste",
+      "odraz",
+      "muzicka_kutija"
+    ],
+    "media": {}
+  },
+  "content": {
+    "rs": {
+      "navigation": ["Početna", "Diskografija", "Medija", "Biografija"],
+      "home": {
+        "release": "Novo Izdanje"
+      },
+      "discography": {
+        "title": "Diskografija",
+        "albums": [
+          {
+            "title": "Leptir",
+            "year": "2019",
+            "songs": ["Leptir", "Na početku", "Neispričane priče"]
+          },
+          {
+            "title": "U srcu",
+            "year": "2019",
+            "songs": ["Bez ljubavi", "Budjenje", "Nemaština", "U srcu"]
+          },
+          {
+            "title": "Do kraja sveta",
+            "year": "2019",
+            "songs": ["Čuvar", "Do kraja sveta", "Duše"]
+          },
+          {
+            "title": "Potvrda o životu",
+            "year": "2017",
+            "songs": ["Mir", "Igra", "Potvrda o životu"]
+          },
+          {
+            "title": "Na Obali",
+            "year": "2016",
+            "songs": ["Vremeplov", "Na Obali", "Besmisla"]
+          },
+          {
+            "title": "Nada",
+            "year": "2015",
+            "songs": ["Vera", "Nada", "Ljubav"]
+          },
+          {
+            "title": "Utočište ",
+            "year": "2014",
+            "songs": [
+              "Utočište",
+              "Nedostojan",
+              "Sloboda Kretanja",
+              "U Senci",
+              "Ničija Zemlja",
+              "Kod Kuće"
+            ]
+          },
+          {
+            "title": "Odraz",
+            "year": "2014",
+            "songs": [
+              "Odraz",
+              "Gluvarenje",
+              "Autsajder",
+              "Povratak Kući",
+              "Bez Borbe",
+              "Končić",
+              "Iza Ogledala"
+            ]
+          },
+          {
+            "title": "Muzička Kutija",
+            "year": "2012",
+            "songs": [
+              "Muzička Kutija",
+              "Kabare",
+              "Drum & Bass",
+              "Podzemlje",
+              "Moravica",
+              "Miss You",
+              "Čovek Sa Dva Lica"
+            ]
+          }
+        ]
+      },
+      "media": {},
+      "biography": {
+        "title": "Biografija",
+        "content": [
+          "Rođen je 31. jula 1973. godine u Prištini, gde je završio osnovnu i srednju školu i Fakultet muzičke umetnosti. Diplomirao je 2003. godine sa temom „Pet pariskih sonata Volfganga Amadeusa Mocarta\".",
+          "Prve kompozicije počeo je da piše još u osnovnoj školi, a kao srednjoškolac je počeo da se bavi studijskim radom i od tada datiraju njegovi audio zapisi.",
+          "Tokom studija, pored komponovanja, bavio se i pozorištem. Komponovao je muziku za više desetina pozorišnih predstava.",
+          "U njegovom stvaralačkom opusu prevladava eksperimentalni odnosno ambijentalni džez.",
+          "Prvi studijski album „Muzička kutija“ snimio je i objavio 2012. godine sa svojim triom[1] u izdanju Centra za kulturu Aleksinac i Izdavačke kuće „Slušaj najglasnije“ iz Zagreba.",
+          "Godine 2013. osniva vlastitu izdavačku kuću \"Zeleni vir\" i u saradnji sa kućama „Slušaj najglasnije“ iz Zagreba i \"Konstantinus\" (Constantinus) iz Niša izdaje album \"Odraz\".",
+          "Živi i radi u Aleksincu kao muzički pedagog."
+        ]
+      }
+    },
+    "en": {
+      "navigation": ["Home", "Discography", "Media", "Biography"],
+      "home": {
+        "release": "New Release"
+      },
+      "discography": {
+        "title": "Discography",
+        "albums": [
+          {
+            "title": "Butterfly",
+            "year": "2019",
+            "songs": ["Butterfly", "At the beginning", "Untold stories"]
+          },
+          {
+            "title": "In the Heart",
+            "year": "2019",
+            "songs": [
+              "Without Love",
+              "Awakening",
+              "Nothingness",
+              "In the Heart"
+            ]
+          },
+          {
+            "title": "To the End of the World",
+            "year": "2019",
+            "songs": ["The Guardian", "To the End of the World", "Souls"]
+          },
+          {
+            "title": "Confirmation of Life",
+            "year": "2017",
+            "songs": ["Calm", "Play", "Confirmation of Life"]
+          },
+          {
+            "title": "Ashore",
+            "year": "2016",
+            "songs": ["Time Machine", "Ashore", "Nonsense"]
+          },
+          {
+            "title": "Hope",
+            "year": "2015",
+            "songs": ["Faith", "Hope", "Love"]
+          },
+          {
+            "title": "Sanctuary",
+            "year": "2014",
+            "songs": [
+              "Sanctuary",
+              "Unworthy",
+              "Freedom Of Movement",
+              "In Shade",
+              "No Man's Land",
+              "At Home"
+            ]
+          },
+          {
+            "title": "Reflection",
+            "year": "2014",
+            "songs": [
+              "Reflection",
+              "Wandering",
+              "Outsider",
+              "Homecoming",
+              "Without A Fight",
+              "Thin Thread",
+              "Behind The Mirror"
+            ]
+          },
+          {
+            "title": "Music Box",
+            "year": "2012",
+            "songs": [
+              "Music Box",
+              "Cabaret",
+              "Drum & Bass",
+              "Underground",
+              "Moravica",
+              "Miss You",
+              "A Man With Two Faces"
+            ]
+          }
+        ]
+      },
+      "media": {},
+      "biography": {
+        "title": "Biography",
+        "content": [
+          "Born In Pristina, where he attended elementary and high school along with the Faculty of Musical Arts. He graduated in 2003 with the thesis: \"Five Parish Sonnets by Wolfgang Amadeus Mozart\"",
+          "He started composing from a young age, writing his first compositions while still in elementary school, by the time he started going to high school he had already started working in his area of expertise with several audio recordings dating from that time.",
+          "During his studies besides composing, he was also engaged in theatre, composing music for several theatre shows. In his creative opus, the theme of experimental or ambient jazz is the most prevalent genre.",
+          "His first studio album \"Music Box\" was recorded and published in 2012 with his trio band with publishing rights issued by Center of Culture of Aleksinac and the publishing house \"Listen Loud\" from Zagreb.",
+          "In 2013 he founded his own record house \"Green Vortex\" and collaborating with record houses \"Listen Loud\" from Zagreb and  \"Constantinus\" from Nis he released his album  \"Reflection\"."
+        ]
+      }
+    }
+  }
+}

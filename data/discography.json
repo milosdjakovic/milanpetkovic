@@ -1,0 +1,168 @@
+[
+  {
+    "cover": "leptir",
+    "latest": true,
+    "rs": {
+      "title": "Leptir",
+      "year": "2019",
+      "songs": ["Leptir", "Na početku", "Neispričane priče"]
+    },
+    "en": {
+      "title": "Butterfly",
+      "year": "2019",
+      "songs": ["Butterfly", "At the beginning", "Untold stories"]
+    }
+  },
+  {
+    "cover": "u_srcu",
+    "latest": true,
+    "rs": {
+      "title": "U srcu",
+      "year": "2019",
+      "songs": ["Bez ljubavi", "Budjenje", "Nemaština", "U srcu"]
+    },
+    "en": {
+      "title": "In the Heart",
+      "year": "2019",
+      "songs": ["Without Love", "Awakening", "Nothingness", "In the Heart"]
+    }
+  },
+  {
+    "cover": "do_kraja_sveta",
+    "latest": true,
+    "rs": {
+      "title": "Do kraja sveta",
+      "year": "2019",
+      "songs": ["Čuvar", "Do kraja sveta", "Duše"]
+    },
+    "en": {
+      "title": "To the End of the World",
+      "year": "2019",
+      "songs": ["The Guardian", "To the End of the World", "Souls"]
+    }
+  },
+  {
+    "cover": "potvrda_o_zivotu",
+    "rs": {
+      "title": "Potvrda o životu",
+      "year": "2017",
+      "songs": ["Mir", "Igra", "Potvrda o životu"]
+    },
+    "en": {
+      "title": "Confirmation Of Life",
+      "year": "2017",
+      "songs": ["Calm", "Play", "Confirmation Of Life"]
+    }
+  },
+  {
+    "cover": "na_obali",
+    "rs": {
+      "title": "Na Obali",
+      "year": "2016",
+      "songs": ["Vremeplov", "Na Obali", "Besmisla"]
+    },
+    "en": {
+      "title": "Ashore",
+      "year": "2016",
+      "songs": ["Time Machine", "Ashore", "Nonsense"]
+    }
+  },
+  {
+    "cover": "nada",
+    "rs": {
+      "title": "Nada",
+      "year": "2015",
+      "songs": ["Vera", "Nada", "Ljubav"]
+    },
+    "en": {
+      "title": "Hope",
+      "year": "2015",
+      "songs": ["Faith", "Hope", "Love"]
+    }
+  },
+  {
+    "cover": "utociste",
+    "rs": {
+      "title": "Utočište ",
+      "year": "2014",
+      "songs": [
+        "Utočište",
+        "Nedostojan",
+        "Sloboda Kretanja",
+        "U Senci",
+        "Ničija Zemlja",
+        "Kod Kuće"
+      ]
+    },
+    "en": {
+      "title": "Sanctuary",
+      "year": "2014",
+      "songs": [
+        "Sanctuary",
+        "Unworthy",
+        "Freedom Of Movement",
+        "In Shade",
+        "No Man's Land",
+        "At Home"
+      ]
+    }
+  },
+  {
+    "cover": "odraz",
+    "rs": {
+      "title": "Odraz",
+      "year": "2014",
+      "songs": [
+        "Odraz",
+        "Gluvarenje",
+        "Autsajder",
+        "Povratak Kući",
+        "Bez Borbe",
+        "Končić",
+        "Iza Ogledala"
+      ]
+    },
+    "en": {
+      "title": "Reflection",
+      "year": "2014",
+      "songs": [
+        "Reflection",
+        "Wandering",
+        "Outsider",
+        "Homecoming",
+        "Without A Fight",
+        "Thin Thread",
+        "Behind The Mirror"
+      ]
+    }
+  },
+  {
+    "cover": "muzicka_kutija",
+    "rs": {
+      "title": "Muzička Kutija",
+      "year": "2012",
+      "songs": [
+        "Muzička Kutija",
+        "Kabare",
+        "Drum & Bass",
+        "Podzemlje",
+        "Moravica",
+        "Miss You",
+        "Čovek Sa Dva Lica"
+      ]
+    },
+    "en": {
+      "title": "Music Box",
+      "year": "2012",
+      "songs": [
+        "Music Box",
+        "Cabaret",
+        "Drum & Bass",
+        "Underground",
+        "Moravica",
+        "Miss You",
+        "A Man With Two Faces"
+      ]
+    }
+  }
+]

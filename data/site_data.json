@@ -1,0 +1,91 @@
+{
+  "navigation": {
+    "links": {
+      "rs": ["Početna", "Diskografija", "Nastupi", "Medija", "Publikacije", "Biografija"],
+      "en": ["Home", "Discography", "Events", "Media", "Publications", "Biography"]
+    },
+    "routes": ["", "discography", "events", "media", "publications", "biography"]
+  },
+  "pages": {
+    "home": {
+      "release": {
+        "subtitle": {
+          "rs": "Najnovije izdanje",
+          "en": "Latest Release"
+        },
+        "text": {
+          "rs": "Kompletna diskografija",
+          "en": "Complete discography"
+        }
+      },
+      "event": {
+        "subtitle": {
+          "rs": "Predstojeći nastupi",
+          "en": "Upcoming Events"
+        },
+        "noEvent": {
+          "rs": "Nema predstojećih nastupa",
+          "en": "No upcoming Events"
+        },
+        "text": {
+          "rs": "Svi nastupi",
+          "en": "All events"
+        }
+      },
+      "video": {
+        "subtitle": {
+          "rs": "Najnoviji video",
+          "en": "Latest video"
+        },
+        "text": {
+          "rs": "Svi muzički spotovi",
+          "en": "All music videos"
+        }
+      }
+    },
+    "discography": {
+      "title": {
+        "rs": "Diskografija",
+        "en": "Discography"
+      }
+    },
+    "events": {
+      "title": {
+        "rs": "Nastupi",
+        "en": "Events"
+      },
+      "upcoming": {
+        "rs": "Predstojeći nastupi",
+        "en": "Upcoming events"
+      },
+      "past": {
+        "rs": "Prošli nastupi",
+        "en": "Past events"
+      },
+      "noEvents": {
+        "rs": "Nema predstojećih nastupa",
+        "en": "No upcoming events"
+      }
+    },
+    "media": {
+      "title": {
+        "rs": "Medija",
+        "en": "Media"
+      },
+      "playlist": {
+        "rs": "Lista pesama",
+        "en": "Playlist"
+      },
+      "youtube": {
+        "rs": "Oficijalni YouTube kanal",
+        "en": "Official YouTube Channel"
+      }
+    },
+    "biography": {
+      "title": {
+        "rs": "Biografija",
+        "en": "Biography"
+      }
+    }
+  }
+}
