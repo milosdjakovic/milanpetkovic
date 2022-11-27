@@ -1,12 +1,57 @@
 ---
+import type { Language } from "../bin/types";
+
+interface VideoData {
+  title: {
+    rs: string;
+    en: string;
+  };
+  link: string;
+}
 export interface Props {
+  videoData: VideoData[];
+  language: Language;
   youtubeLinkLabel: string;
 }
 
-const { youtubeLinkLabel } = Astro.props;
+const { videoData, language, youtubeLinkLabel } = Astro.props;
 ---
 
-<!-- Official Youtube Channel -->
+{language}
+{JSON.stringify(videoData)}
+
+<!-- Playlist -->
+<ul class="mt-4 mb-12">
+  {
+    videoData.map((video) => (
+      <li>
+        <button
+          class="flex flex-row-reverse py-2 xl:flex-row sm:py-0 sm:my-2 focus:outline-none"
+          data-video={video}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="xl:-ml-8 xl:mr-2 icon icon-tabler icon-tabler-volume"
+            width="24"
+            height="24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M0 0h24v24H0z" stroke="none" />
+            <path d="M15 8a5 5 0 010 8M17.7 5a9 9 0 010 14M6 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h2l3.5-4.5A.8.8 0 0111 5v14a.8.8 0 01-1.5.5L6 15" />
+          </svg>
+
+          <span class="mr-2 xl:mr-0">{video.title[language]}</span>
+        </button>
+      </li>
+    ))
+  }
+</ul>
+
+<!-- Official Youtube Channel Link -->
 <a
   class="flex items-center link"
   href="https://www.youtube.com/user/MilanPetkovicTrio/videos"
