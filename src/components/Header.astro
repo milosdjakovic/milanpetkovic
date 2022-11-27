@@ -16,10 +16,10 @@ const pathname = url.pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<div class="fixed inset-x-0 top-0 z-30 flex justify-center h-12 md:h-16">
-  <header
-    class="flex justify-between w-full max-w-6xl px-6 border-2 border-b-2 border-transparent"
-  >
+<header
+  class="fixed inset-x-0 top-0 z-30 flex justify-center h-12 md:h-16 border-b-2 border-transparent"
+>
+  <div class="flex justify-between w-full max-w-6xl px-6">
     <a
       href="/"
       class="px-4 -ml-4 flex items-center text-lg hover:bg-gray-100/10"
@@ -46,8 +46,8 @@ const currentPath = pathname.slice(1); // remove the first "/"
     </nav>
 
     <LanguageSwitcher language={language} />
-  </header>
-</div>
+  </div>
+</header>
 
 <script>
   import darkLeather from "../images/dark_leather.png";
