@@ -1,7 +1,14 @@
 ---
+import type { Lang } from "../../bin/language";
+
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import EventsLayout from "../../layouts/EventsLayout.astro";
+
+import eventsData from "../../data/events.json";
+
+const language: Lang = "rs";
 ---
 
-<BaseLayout title="Milan Petković" page="Events" language="rs">
-  <main></main>
+<BaseLayout title="Milan Petković" page="Nastupi" language={language}>
+  <EventsLayout events={eventsData} locale="sr-Latn" />
 </BaseLayout>
