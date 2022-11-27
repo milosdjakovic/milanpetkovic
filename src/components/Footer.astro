@@ -1,0 +1,16 @@
+---
+import wall from "../images/wall4.png";
+---
+
+<footer
+  class="flex flex-col fixed inset-0 z-10 items-center justify-center"
+  style={{
+    backgroundImage: `url(${wall.src})`,
+    paddingTop: `calc(13rem + 4rem)`,
+  }}
+>
+  <div class="flex-1 mt-4 flex flex-col items-center justify-center">
+    <p>{JSON.stringify(wall)}</p>
+    <p>TEST</p>
+  </div>
+</footer>
