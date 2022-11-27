@@ -17,16 +17,19 @@ interface Event {
 }
 
 export interface Props {
+  title: string;
   events: Event[];
   locale: string;
 }
 
-const { events, locale } = Astro.props;
+const { title, events, locale } = Astro.props;
 ---
 
-{
-  events.map((event) => (
-    <div>
+<div class="mt-6">
+  <h2 class="text-2xl">{title}</h2>
+
+  {
+    events.map((event) => (
       <a
         href={event.link}
         class="block pb-3 mt-4 transition-colors duration-300 ease-in-out cursor-pointer group hover:shadow-bottom-fluo"
@@ -45,6 +48,6 @@ const { events, locale } = Astro.props;
           })}
         </p>
       </a>
-    </div>
-  ))
-}
+    ))
+  }
+</div>
