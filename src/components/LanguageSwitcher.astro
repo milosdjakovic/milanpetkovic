@@ -1,10 +1,21 @@
 ---
+export interface Props {
+  language: "en" | "rs";
+}
+
+const { language } = Astro.props;
 ---
 
 <div class="flex text-sm">
-  <button class="lang-btn" data-lang="en">EN</button>
+  <button
+    class={language === "en" ? "lang-btn lang-btn__active" : "lang-btn"}
+    data-lang="en">EN</button
+  >
   <span class="self-center">/</span>
-  <button class="lang-btn" data-lang="rs">RS</button>
+  <button
+    class={language === "rs" ? "lang-btn lang-btn__active" : "lang-btn"}
+    data-lang="rs">RS</button
+  >
 </div>
 
 <style>
@@ -17,32 +28,21 @@
 </style>
 
 <script>
-  import { getLanguage, setLanguage } from "../../bin/language";
-
   const buttons = document.querySelectorAll(
     ".lang-btn"
   ) as NodeListOf<HTMLElement>;
 
-  const language: string = getLanguage();
-  const activeButtonClass: string = "lang-btn__active";
-
-  function removeActiveButtonClass() {
-    buttons.forEach((button) => button.classList.remove(activeButtonClass));
-  }
-
-  function initializeActiveButtonClass(button: HTMLElement) {
-    if (button.dataset.lang === language) {
-      button.classList.add(activeButtonClass);
-    }
+  function switchLanguage(language: "en" | "rs") {
+    const pathFragments: string[] = window.location.pathname.split("/");
+    pathFragments[1] = language;
+    const newPath: string = pathFragments.join("/");
+    window.location.href = newPath;
   }
 
   buttons.forEach((button) => {
-    initializeActiveButtonClass(button);
-
     button.addEventListener("click", () => {
-      setLanguage(button.dataset.lang ?? "en");
-      removeActiveButtonClass();
-      button.classList.add(activeButtonClass);
+      const selectedLanguage = button.dataset.lang as "en" | "rs";
+      switchLanguage(selectedLanguage);
     });
   });
 </script>
