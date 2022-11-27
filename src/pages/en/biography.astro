@@ -2,7 +2,7 @@
 import type { Lang } from "../../bin/language";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Biography from "../../layouts/Biography.astro";
+import BiographyLayout from "../../layouts/BiographyLayout.astro";
 
 import biographyData from "../../data/biography.json";
 
@@ -14,7 +14,7 @@ const language: Lang = "en";
   page={biographyData[language].title}
   language="en"
 >
-  <Biography
+  <BiographyLayout
     title={biographyData[language].title}
     paragraphs={biographyData[language].content}
     imageAlt={biographyData[language].imageAlt}
