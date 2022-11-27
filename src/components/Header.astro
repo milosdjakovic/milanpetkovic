@@ -53,7 +53,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
   import darkLeather from "../images/dark_leather.png";
 
   const header: HTMLElement = document.querySelector("header")!;
-  let headerStylesUpdated: boolean = window.scrollY !== 0;
+  let headerStylesUpdated: boolean = false;
 
   function handleScroll() {
     const onTop: boolean = window.scrollY === 0;
@@ -74,6 +74,8 @@ const currentPath = pathname.slice(1); // remove the first "/"
       headerStylesUpdated = true;
     }
   }
+
+  handleScroll();
 
   window.addEventListener("scroll", handleScroll);
 </script>
