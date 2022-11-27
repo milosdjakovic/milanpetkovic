@@ -1,5 +1,5 @@
 ---
-import siteData from "../../data/site_data.json";
+import siteData from "../data/site_data.json";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 export interface Props {
@@ -29,7 +29,11 @@ const currentPath = pathname.slice(1); // remove the first "/"
         siteData.navigation.routes.map((route, i) => (
           <a
             href={`/${language}/${route}`}
-            class={currentPath === route ? "link link__active" : "link"}
+            class={
+              currentPath === `${language}/${route}`
+                ? "link link__active"
+                : "link"
+            }
           >
             <span>{siteData.navigation.links.en[i]}</span>
           </a>

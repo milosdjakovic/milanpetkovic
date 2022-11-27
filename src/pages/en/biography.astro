@@ -1,14 +1,17 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Biography from "../../components/page-base/Biography.astro";
+import biographyData from "../../data/biography.json";
+
+const language: "en" | "rs" = "en";
 ---
 
 <Layout title="Milan Petković" page="Biography" language="en">
   <main>
     <Biography
-      title="Biography"
-      paragraphs={["123", "456", "678"]}
-      imageAlt="Image of milan playing keyboards."
+      title={biographyData[language].title}
+      paragraphs={biographyData[language].content}
+      imageAlt={biographyData[language].imageAlt}
     />
   </main>
 </Layout>

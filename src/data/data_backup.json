@@ -1,7 +1,12 @@
 {
   "meta": {
     "numberOfLastReleases": 3,
-    "routes": ["/", "discography", "media", "biography"],
+    "routes": [
+      "/",
+      "discography",
+      "media",
+      "biography"
+    ],
     "albumCovers": [
       "leptir",
       "u_srcu",
@@ -17,7 +22,12 @@
   },
   "content": {
     "rs": {
-      "navigation": ["Početna", "Diskografija", "Medija", "Biografija"],
+      "navigation": [
+        "Početna",
+        "Diskografija",
+        "Medija",
+        "Biografija"
+      ],
       "home": {
         "release": "Novo Izdanje"
       },
@@ -27,32 +37,57 @@
           {
             "title": "Leptir",
             "year": "2019",
-            "songs": ["Leptir", "Na početku", "Neispričane priče"]
+            "songs": [
+              "Leptir",
+              "Na početku",
+              "Neispričane priče"
+            ]
           },
           {
             "title": "U srcu",
             "year": "2019",
-            "songs": ["Bez ljubavi", "Budjenje", "Nemaština", "U srcu"]
+            "songs": [
+              "Bez ljubavi",
+              "Budjenje",
+              "Nemaština",
+              "U srcu"
+            ]
           },
           {
             "title": "Do kraja sveta",
             "year": "2019",
-            "songs": ["Čuvar", "Do kraja sveta", "Duše"]
+            "songs": [
+              "Čuvar",
+              "Do kraja sveta",
+              "Duše"
+            ]
           },
           {
             "title": "Potvrda o životu",
             "year": "2017",
-            "songs": ["Mir", "Igra", "Potvrda o životu"]
+            "songs": [
+              "Mir",
+              "Igra",
+              "Potvrda o životu"
+            ]
           },
           {
             "title": "Na Obali",
             "year": "2016",
-            "songs": ["Vremeplov", "Na Obali", "Besmisla"]
+            "songs": [
+              "Vremeplov",
+              "Na Obali",
+              "Besmisla"
+            ]
           },
           {
             "title": "Nada",
             "year": "2015",
-            "songs": ["Vera", "Nada", "Ljubav"]
+            "songs": [
+              "Vera",
+              "Nada",
+              "Ljubav"
+            ]
           },
           {
             "title": "Utočište ",
@@ -102,14 +137,19 @@
           "Prve kompozicije počeo je da piše još u osnovnoj školi, a kao srednjoškolac je počeo da se bavi studijskim radom i od tada datiraju njegovi audio zapisi.",
           "Tokom studija, pored komponovanja, bavio se i pozorištem. Komponovao je muziku za više desetina pozorišnih predstava.",
           "U njegovom stvaralačkom opusu prevladava eksperimentalni odnosno ambijentalni džez.",
-          "Prvi studijski album „Muzička kutija“ snimio je i objavio 2012. godine sa svojim triom[1] u izdanju Centra za kulturu Aleksinac i Izdavačke kuće „Slušaj najglasnije“ iz Zagreba.",
+          "Prvi studijski album „Muzička kutija“ snimio je i objavio 2012. godine sa svojim triom u izdanju Centra za kulturu Aleksinac i Izdavačke kuće „Slušaj najglasnije“ iz Zagreba.",
           "Godine 2013. osniva vlastitu izdavačku kuću \"Zeleni vir\" i u saradnji sa kućama „Slušaj najglasnije“ iz Zagreba i \"Konstantinus\" (Constantinus) iz Niša izdaje album \"Odraz\".",
           "Živi i radi u Aleksincu kao muzički pedagog."
         ]
       }
     },
     "en": {
-      "navigation": ["Home", "Discography", "Media", "Biography"],
+      "navigation": [
+        "Home",
+        "Discography",
+        "Media",
+        "Biography"
+      ],
       "home": {
         "release": "New Release"
       },
@@ -119,7 +159,11 @@
           {
             "title": "Butterfly",
             "year": "2019",
-            "songs": ["Butterfly", "At the beginning", "Untold stories"]
+            "songs": [
+              "Butterfly",
+              "At the beginning",
+              "Untold stories"
+            ]
           },
           {
             "title": "In the Heart",
@@ -134,22 +178,38 @@
           {
             "title": "To the End of the World",
             "year": "2019",
-            "songs": ["The Guardian", "To the End of the World", "Souls"]
+            "songs": [
+              "The Guardian",
+              "To the End of the World",
+              "Souls"
+            ]
           },
           {
             "title": "Confirmation of Life",
             "year": "2017",
-            "songs": ["Calm", "Play", "Confirmation of Life"]
+            "songs": [
+              "Calm",
+              "Play",
+              "Confirmation of Life"
+            ]
           },
           {
             "title": "Ashore",
             "year": "2016",
-            "songs": ["Time Machine", "Ashore", "Nonsense"]
+            "songs": [
+              "Time Machine",
+              "Ashore",
+              "Nonsense"
+            ]
           },
           {
             "title": "Hope",
             "year": "2015",
-            "songs": ["Faith", "Hope", "Love"]
+            "songs": [
+              "Faith",
+              "Hope",
+              "Love"
+            ]
           },
           {
             "title": "Sanctuary",
