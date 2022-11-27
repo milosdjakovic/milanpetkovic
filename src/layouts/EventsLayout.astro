@@ -1,7 +1,7 @@
 ---
 import type { Locale } from "../bin/types";
-import EventLink from "../components/EventLink.astro";
-import UpcomingEvent from "../components/UpcomingEvent.vue";
+import EventLink from "../components/EventLink.vue";
+import UpcomingEvents from "../components/UpcomingEvents.vue";
 
 interface Event {
   date: string;
@@ -12,18 +12,27 @@ interface Event {
 }
 
 export interface Props {
-  title: string;
+  upcomingEventsTitle: string;
+  noEventsTitle: string;
+  pastEventsTitle: string;
   events: Event[];
   locale: Locale;
 }
 
-const { title, events, locale } = Astro.props;
+const { upcomingEventsTitle, noEventsTitle, pastEventsTitle, events, locale } =
+  Astro.props;
 ---
 
-<UpcomingEvent events={events} client:load />
+<UpcomingEvents
+  events={events}
+  locale={locale}
+  upcomingEventsTitle={upcomingEventsTitle}
+  noEventsTitle={noEventsTitle}
+  client:load
+/>
 
 <div class="mt-6">
-  <h2 class="text-2xl">{title}</h2>
+  <h2 class="text-2xl">{pastEventsTitle}</h2>
 
   {events.map((event) => <EventLink event={event} locale={locale} />)}
 </div>

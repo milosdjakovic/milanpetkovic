@@ -12,7 +12,9 @@ const language: Language = "rs";
 
 <BaseLayout title="Milan Petković" page="Nastupi" language={language}>
   <EventsLayout
-    title={siteData.pages.events.past[language]}
+    upcomingEventsTitle={siteData.phrases.events.upcoming[language]}
+    noEventsTitle={siteData.phrases.events.none[language]}
+    pastEventsTitle={siteData.phrases.events.past[language]}
     events={eventsData}
     locale="sr-Latn"
   />
