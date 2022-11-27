@@ -1,0 +1,20 @@
+{
+  "events": {
+    "upcoming": {
+      "rs": "Predstojeći nastupi",
+      "en": "Upcoming Events"
+    },
+    "past": {
+      "rs": "Prošli nastupi",
+      "en": "Past events"
+    },
+    "none": {
+      "rs": "Nema predstojećih nastupa",
+      "en": "No upcoming Events"
+    },
+    "all": {
+      "rs": "Svi nastupi",
+      "en": "All events"
+    }
+  }
+}
