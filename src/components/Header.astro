@@ -1,13 +1,12 @@
 ---
-import type { Lang } from "../bin/language";
-
+import type { Language } from "../bin/types";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 import siteData from "../data/site_data.json";
 
 export interface Props {
   title: string;
-  language: Lang;
+  language: Language;
 }
 
 const { title, language } = Astro.props;

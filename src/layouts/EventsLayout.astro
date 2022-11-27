@@ -1,13 +1,8 @@
 ---
-// export interface Props {
-//   title: string;
-//   paragraphs: string[];
-//   imageAlt: string;
-// }
+import type { Locale } from "../bin/types";
+import EventLink from "../components/EventLink.astro";
+import UpcomingEvent from "../components/UpcomingEvent.vue";
 
-import { getLanguage } from "../bin/language";
-
-// const { title, paragraphs, imageAlt } = Astro.props;
 interface Event {
   date: string;
   time: string;
@@ -19,35 +14,16 @@ interface Event {
 export interface Props {
   title: string;
   events: Event[];
-  locale: string;
+  locale: Locale;
 }
 
 const { title, events, locale } = Astro.props;
 ---
 
+<UpcomingEvent events={events} client:load />
+
 <div class="mt-6">
   <h2 class="text-2xl">{title}</h2>
 
-  {
-    events.map((event) => (
-      <a
-        href={event.link}
-        class="block pb-3 mt-4 transition-colors duration-300 ease-in-out cursor-pointer group hover:shadow-bottom-fluo"
-        target="_blank"
-      >
-        <p class="text-xl group-hover:text-fluo-green">{event.place}</p>
-        <p class="text-sm font-bold text-gray-400 group-hover:text-fluo-green">
-          {event.town}
-        </p>
-        <p class="font-bold text-fluo-green group-hover:text-gray-400">
-          {new Date(`${event.date}T${event.time}Z`).toLocaleDateString(locale, {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
-      </a>
-    ))
-  }
+  {events.map((event) => <EventLink event={event} locale={locale} />)}
 </div>

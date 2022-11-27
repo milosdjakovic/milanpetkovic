@@ -1,4 +1,4 @@
-export type Lang = "en" | "rs";
+import type { Language } from "./types";
 
 export function initializeLanguage(): void {
   const language = localStorage.getItem("language");
@@ -8,10 +8,10 @@ export function initializeLanguage(): void {
   localStorage.setItem("language", "en");
 }
 
-export function getLanguage(): Lang {
-  return localStorage.getItem("language") as Lang ?? 'en';
+export function getLanguage(): Language {
+  return localStorage.getItem("language") as Language ?? 'en';
 }
 
-export function setLanguage(language: Lang): void {
+export function setLanguage(language: Language): void {
   localStorage.setItem("language", language);
 }
