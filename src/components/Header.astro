@@ -12,7 +12,8 @@ export interface Props {
 
 const { title, language } = Astro.props;
 
-const pathname = new URL(Astro.request.url).pathname;
+const url = new URL(Astro.request.url);
+const pathname = url.pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
@@ -29,18 +30,19 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
     <nav class="hidden lg:flex">
       {
-        siteData.navigation.routes.map((route, i) => (
-          <a
-            href={`/${language}/${route}`}
-            class={
-              currentPath === `${language}/${route}`
-                ? "link link__active"
-                : "link"
-            }
-          >
-            <span>{siteData.navigation.links[language][i]}</span>
-          </a>
-        ))
+        siteData.navigation.routes.map((route, i) => {
+          const formattedRoute: string = route ? `${route}/` : "";
+          const path: string = `${language}/${formattedRoute}`;
+
+          return (
+            <a
+              href={`/${path}`}
+              class={currentPath === `${path}` ? "link link__active" : "link"}
+            >
+              <span>{siteData.navigation.links[language][i]}</span>
+            </a>
+          );
+        })
       }
     </nav>
 
