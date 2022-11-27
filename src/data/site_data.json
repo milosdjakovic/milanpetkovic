@@ -1,10 +1,51 @@
 {
   "navigation": {
     "links": {
-      "rs": ["Početna", "Diskografija", "Nastupi", "Medija", "Publikacije", "Biografija"],
-      "en": ["Home", "Discography", "Events", "Media", "Publications", "Biography"]
+      "rs": [
+        "Početna",
+        "Diskografija",
+        "Nastupi",
+        "Medija",
+        "Publikacije",
+        "Biografija"
+      ],
+      "en": [
+        "Home",
+        "Discography",
+        "Events",
+        "Media",
+        "Publications",
+        "Biography"
+      ]
     },
-    "routes": ["", "discography", "events", "media", "publications", "biography"]
+    "routes": [
+      "",
+      "discography",
+      "events",
+      "media",
+      "publications",
+      "biography"
+    ]
+  },
+  "phrases": {
+    "events": {
+      "upcoming": {
+        "rs": "Predstojeći nastupi",
+        "en": "Upcoming Events"
+      },
+      "past": {
+        "rs": "Prošli nastupi",
+        "en": "Past events"
+      },
+      "none": {
+        "rs": "Nema predstojećih nastupa",
+        "en": "No upcoming Events"
+      },
+      "all": {
+        "rs": "Svi nastupi",
+        "en": "All events"
+      }
+    }
   },
   "pages": {
     "home": {
