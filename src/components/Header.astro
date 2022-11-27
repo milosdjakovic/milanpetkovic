@@ -52,16 +52,25 @@ const currentPath = pathname.slice(1); // remove the first "/"
   import darkLeather from "../images/dark_leather.png";
 
   const header: HTMLElement = document.querySelector("header")!;
+  let headerStylesUpdated: boolean = window.scrollY !== 0;
 
   function handleScroll() {
-    if (window.scrollY > 0) {
-      header.classList.add("border-gray-800");
-      header.classList.add("shadow-2xl");
-      header.style.backgroundImage = `url(${darkLeather.src})`;
-    } else {
+    const onTop: boolean = window.scrollY === 0;
+
+    if (onTop) {
       header.classList.remove("border-gray-800");
       header.classList.remove("shadow-2xl");
       header.style.backgroundImage = `none`;
+
+      headerStylesUpdated = false;
+    }
+
+    if (!onTop && !headerStylesUpdated) {
+      header.classList.add("border-gray-800");
+      header.classList.add("shadow-2xl");
+      header.style.backgroundImage = `url(${darkLeather.src})`;
+
+      headerStylesUpdated = true;
     }
   }
 
