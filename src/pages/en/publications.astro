@@ -2,7 +2,7 @@
 import type { Lang } from "../../bin/language";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Publications from "../../layouts/Publications.astro";
+import PublicationsLayout from "../../layouts/PublicationsLayout.astro";
 
 import publicationsData from "../../data/publications.json";
 
@@ -14,7 +14,7 @@ const language: Lang = "en";
   page={publicationsData[language].title}
   language={language}
 >
-  <Publications
+  <PublicationsLayout
     title={publicationsData[language].title}
     articles={publicationsData.articles}
   />
