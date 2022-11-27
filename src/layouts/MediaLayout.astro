@@ -20,6 +20,27 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
 {language}
 {JSON.stringify(videoData)}
 
+<!-- Video section -->
+<div v-for="(video, i) in $page.lastVideo.edges">
+  <h1 class="text-2xl">{videoData[0].title[language]}</h1>
+
+  <!-- Video -->
+  <div
+    class="relative mt-4"
+    style="width: 100%; height: 0; padding-bottom: 56.25%;"
+  >
+    <iframe
+      title="test"
+      width="560"
+      height="315"
+      class="absolute top-0 left-0 w-full h-full"
+      src={videoData[0].link}
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+</div>
+
 <!-- Playlist -->
 <ul class="mt-4 mb-12">
   {
