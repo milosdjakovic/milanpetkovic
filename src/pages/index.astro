@@ -2,5 +2,8 @@
 ---
 
 <script>
-  location.href = "en/";
+  import { getLanguage, Lang } from "../bin/language";
+
+  const language: Lang = getLanguage() ?? "en";
+  location.href = `${language}/`;
 </script>
