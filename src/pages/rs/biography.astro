@@ -10,11 +10,9 @@ const language: Lang = "rs";
 ---
 
 <Layout title="Milan Petković" page="Biography" language={language}>
-  <main>
-    <Biography
-      title={biographyData[language].title}
-      paragraphs={biographyData[language].content}
-      imageAlt={biographyData[language].imageAlt}
-    />
-  </main>
+  <Biography
+    title={biographyData[language].title}
+    paragraphs={biographyData[language].content}
+    imageAlt={biographyData[language].imageAlt}
+  />
 </Layout>
