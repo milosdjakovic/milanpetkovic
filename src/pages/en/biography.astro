@@ -9,10 +9,14 @@ import biographyData from "../../data/biography.json";
 const language: Lang = "en";
 ---
 
-<Layout title="Milan Petković" page="Biography" language="en">
-    <Biography
-      title={biographyData[language].title}
-      paragraphs={biographyData[language].content}
-      imageAlt={biographyData[language].imageAlt}
-    />
+<Layout
+  title="Milan Petković"
+  page={biographyData[language].title}
+  language="en"
+>
+  <Biography
+    title={biographyData[language].title}
+    paragraphs={biographyData[language].content}
+    imageAlt={biographyData[language].imageAlt}
+  />
 </Layout>

@@ -9,7 +9,11 @@ import biographyData from "../../data/biography.json";
 const language: Lang = "rs";
 ---
 
-<Layout title="Milan Petković" page="Biography" language={language}>
+<Layout
+  title="Milan Petković"
+  page={biographyData[language].title}
+  language={language}
+>
   <Biography
     title={biographyData[language].title}
     paragraphs={biographyData[language].content}
