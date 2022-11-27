@@ -17,8 +17,11 @@ const { title, articles } = Astro.props;
 
 {
   articles.map((article) => (
-    <a href={article.link} class="block max-w-xl mt-8 first:mt-0 group">
-      <p class="text-lg font-semibold group-hover:text-fluo-green">
+    <a
+      href={article.link}
+      class="block  mt-8 first:mt-0 group hover:shadow-bottom-fluo"
+    >
+      <p class="text-lg max-w-xl font-semibold group-hover:text-fluo-green">
         {article.title}
       </p>
 
