@@ -2,7 +2,7 @@
 import type { Language } from "../bin/types";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 
-import siteData from "../data/site_data.json";
+import routeData from "../data/route_data.json";
 
 export interface Props {
   title: string;
@@ -29,7 +29,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
     <nav class="hidden lg:flex">
       {
-        siteData.navigation.routes.map((route, i) => {
+        routeData.routes.map((route, i) => {
           const formattedRoute: string = route ? `${route}/` : "";
           const path: string = `${language}/${formattedRoute}`;
 
@@ -38,7 +38,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
               href={`/${path}`}
               class={currentPath === `${path}` ? "link link__active" : "link"}
             >
-              <span>{siteData.navigation.links[language][i]}</span>
+              <span>{routeData.links[language][i]}</span>
             </a>
           );
         })

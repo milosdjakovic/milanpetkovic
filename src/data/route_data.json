@@ -1,0 +1,28 @@
+{
+  "links": {
+    "rs": [
+      "Početna",
+      "Diskografija",
+      "Nastupi",
+      "Medija",
+      "Publikacije",
+      "Biografija"
+    ],
+    "en": [
+      "Home",
+      "Discography",
+      "Events",
+      "Media",
+      "Publications",
+      "Biography"
+    ]
+  },
+  "routes": [
+    "",
+    "discography",
+    "events",
+    "media",
+    "publications",
+    "biography"
+  ]
+}
