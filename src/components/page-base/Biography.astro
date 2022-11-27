@@ -1,0 +1,38 @@
+---
+import { Image, Picture } from "@astrojs/image/components";
+import imageOfMilan from "../../images/milan_profile.jpg";
+
+export interface Props {
+  title: string;
+  paragraphs: string[];
+  imageAlt: string;
+}
+
+const { title, paragraphs, imageAlt } = Astro.props;
+---
+
+<h1 class="text-2xl">{title}</h1>
+
+<div class="mt-4">
+  <Image
+    src={imageOfMilan}
+    alt={imageAlt}
+    class="float-none mb-0 ml-0 md:float-right md:ml-8 md:mb-8"
+  />
+
+  {paragraphs.map((paragraph) => <p class="mt-4">{paragraph}</p>)}
+  <!-- <p
+    v-for="(paragraph, i) in biography.node[lang].content"
+    :key="`bio_para_${i}`"
+    class="mt-4"
+  >
+    {{ paragraph }}
+  </p> -->
+
+  <a
+    href="https://sr.wikipedia.org/wiki/Milan_Petković"
+    class="inline-block mt-4 underline opacity-75 text-fluo-green hover:opacity-100"
+  >
+    Wikipedia
+  </a>
+</div>

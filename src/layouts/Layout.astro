@@ -1,15 +1,20 @@
 ---
+import darkLeather from "../images/dark_leather.png";
+import rhodesKeys from "../images/rhodes_keys.svg";
+
 import Header from "../components/Header.astro";
+
 export interface Props {
   title: string;
   page: string;
+  language: "en" | "rs";
 }
 
-const { title, page } = Astro.props;
+const { title, page, language } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={language}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -17,12 +22,28 @@ const { title, page } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title} - {page}</title>
   </head>
-  <body
-    class="text-gray-100"
-    style="background-image: url(/images/dark_leather.png);"
-  >
-    <Header title={title} />
-    <slot />
+  <body class="text-gray-100">
+    <main
+      class="relative z-20 flex flex-col text-gray-100 shadow-lg"
+      style={{
+        backgroundImage: `url(${darkLeather.src})`,
+        marginBottom: "calc(100vh - 7rem - 4rem)",
+      }}
+    >
+      <div
+        class="self-center w-full max-w-6xl min-h-screen px-6 pt-16 pb-12 md:pb-20 md:pt-24"
+      >
+        <Header title={title} language={language} />
+
+        <slot />
+      </div>
+
+      <div
+        class="bg-repeat-x h-28"
+        style={{ backgroundImage: `url(${rhodesKeys})` }}
+      >
+      </div>
+    </main>
   </body>
 
   <script>

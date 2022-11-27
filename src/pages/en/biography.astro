@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Biography from "../../components/page-base/Biography.astro";
+---
+
+<Layout title="Milan Petković" page="Biography" language="en">
+  <main>
+    <Biography
+      title="Biography"
+      paragraphs={["123", "456", "678"]}
+      imageAlt="Image of milan playing keyboards."
+    />
+  </main>
+</Layout>

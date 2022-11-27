@@ -4,9 +4,10 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 export interface Props {
   title: string;
+  language: "en" | "rs";
 }
 
-const { title } = Astro.props;
+const { title, language } = Astro.props;
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
@@ -27,7 +28,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
       {
         siteData.navigation.routes.map((route, i) => (
           <a
-            href={`/${route}`}
+            href={`/${language}/${route}`}
             class={currentPath === route ? "link link__active" : "link"}
           >
             <span>{siteData.navigation.links.en[i]}</span>
