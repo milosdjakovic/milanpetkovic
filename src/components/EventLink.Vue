@@ -1,7 +1,7 @@
 import { Locale } from '../bin/types';
 <template>
   <a
-    href="{event.link}"
+    :href="event.link"
     class="block pb-3 mt-4 transition-colors duration-300 ease-in-out cursor-pointer group hover:shadow-bottom-fluo"
     target="_blank"
   >
