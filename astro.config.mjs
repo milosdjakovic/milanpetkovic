@@ -10,8 +10,11 @@ import image from "@astrojs/image";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
+import vue from "@astrojs/vue";
+
+// https://astro.build/config
 export default defineConfig({
   // https://docs.astro.build/en/guides/integrations-guide/sitemap/#usage
   site: 'http://milanpetkovic.com',
-  integrations: [tailwind(), image(), sitemap()]
+  integrations: [tailwind(), image(), sitemap(), vue()]
 });
