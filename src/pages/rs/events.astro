@@ -4,11 +4,16 @@ import type { Lang } from "../../bin/language";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import EventsLayout from "../../layouts/EventsLayout.astro";
 
+import siteData from "../../data/site_data.json";
 import eventsData from "../../data/events.json";
 
 const language: Lang = "rs";
 ---
 
 <BaseLayout title="Milan Petković" page="Nastupi" language={language}>
-  <EventsLayout events={eventsData} locale="sr-Latn" />
+  <EventsLayout
+    title={siteData.pages.events.past[language]}
+    events={eventsData}
+    locale="sr-Latn"
+  />
 </BaseLayout>
