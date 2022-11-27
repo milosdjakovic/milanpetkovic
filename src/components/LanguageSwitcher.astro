@@ -1,6 +1,8 @@
 ---
+import type { Lang } from "../bin/language";
+
 export interface Props {
-  language: "en" | "rs";
+  language: Lang;
 }
 
 const { language } = Astro.props;
@@ -28,11 +30,13 @@ const { language } = Astro.props;
 </style>
 
 <script>
+  import type { Lang } from "../bin/language";
+
   const buttons = document.querySelectorAll(
     ".lang-btn"
   ) as NodeListOf<HTMLElement>;
 
-  function switchLanguage(language: "en" | "rs") {
+  function switchLanguage(language: Lang) {
     const pathFragments: string[] = window.location.pathname.split("/");
     pathFragments[1] = language;
     const newPath: string = pathFragments.join("/");
@@ -41,7 +45,7 @@ const { language } = Astro.props;
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      const selectedLanguage = button.dataset.lang as "en" | "rs";
+      const selectedLanguage = button.dataset.lang as Lang;
       switchLanguage(selectedLanguage);
     });
   });

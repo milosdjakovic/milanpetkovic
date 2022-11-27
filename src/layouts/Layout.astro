@@ -1,13 +1,15 @@
 ---
-import darkLeather from "../images/dark_leather.png";
-import rhodesKeys from "../images/rhodes_keys.svg";
+import type { Lang } from "../bin/language";
 
 import Header from "../components/Header.astro";
+
+import darkLeather from "../images/dark_leather.png";
+import rhodesKeys from "../images/rhodes_keys.svg";
 
 export interface Props {
   title: string;
   page: string;
-  language: "en" | "rs";
+  language: Lang;
 }
 
 const { title, page, language } = Astro.props;
