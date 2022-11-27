@@ -7,6 +7,11 @@ import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), image()]
+  // https://docs.astro.build/en/guides/integrations-guide/sitemap/#usage
+  site: 'http://milanpetkovic.com',
+  integrations: [tailwind(), image(), sitemap()]
 });
