@@ -16,5 +16,19 @@
       "rs": "Svi nastupi",
       "en": "All events"
     }
+  },
+  "media": {
+    "title": {
+      "rs": "Medija",
+      "en": "Media"
+    },
+    "playlist": {
+      "rs": "Lista pesama",
+      "en": "Playlist"
+    },
+    "youtube": {
+      "rs": "Oficijalni YouTube kanal",
+      "en": "Official YouTube Channel"
+    }
   }
 }
