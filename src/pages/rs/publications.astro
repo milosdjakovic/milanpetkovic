@@ -1,7 +1,21 @@
 ---
+import type { Lang } from "../../bin/language";
+
 import Layout from "../../layouts/Layout.astro";
+import Publications from "../../layouts/Publications.astro";
+
+import publicationsData from "../../data/publications.json";
+
+const language: Lang = "rs";
 ---
 
-<Layout title="Milan Petković" page="Publications" language="rs">
-  <main></main>
+<Layout
+  title="Milan Petković"
+  page={publicationsData[language].title}
+  language={language}
+>
+  <Publications
+    title={publicationsData[language].title}
+    articles={publicationsData.articles}
+  />
 </Layout>
