@@ -1,7 +1,14 @@
 ---
+import type { Language } from "../../bin/types";
+
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import MediaLayout from "../../layouts/MediaLayout.astro";
+
+import i18nData from "../../data/i18n_data.json";
+
+const language: Language = "en";
 ---
 
 <BaseLayout title="Milan Petković" page="Media" language="en">
-  <main></main>
+  <MediaLayout youtubeLinkLabel={i18nData.media.youtube[language]} />
 </BaseLayout>
