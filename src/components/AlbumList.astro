@@ -40,16 +40,25 @@ const { language, discography } = Astro.props;
       const cover = album.cover as AlbumCovers;
 
       return (
-        <div class="flex flex-col items-center  cursor-pointer rounded-b-md group">
-          <Image
-            src={albumCovers[cover]}
-            alt={album[language].title}
-            class="border-2 border-transparent group-hover:border-fluo-green"
-            style={{ maxWidth: "20rem" }}
-          />
+        <div class="flex flex-col rounded-b-md transform hover:scale-110 duration-200 group">
+          <div class="relative">
+            <Image
+              src={albumCovers[cover]}
+              alt={album[language].title}
+              class="border-2 border-transparent"
+              style={{ maxWidth: "20rem" }}
+            />
 
-          <p class="py-3 text-lg font-semibold group-hover:text-fluo-green">
+            <ol class="p-4 list-decimal inset-0 list-inside opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute bg-gray-900/90">
+              {album[language].songs.map((song) => (
+                <li>{song}</li>
+              ))}
+            </ol>
+          </div>
+
+          <p class="mt-1 text-lg font-semibold">
             {album[language].title}
+            <span class="-mt-1 text-sm text-gray-300">({album.year})</span>
           </p>
         </div>
       );

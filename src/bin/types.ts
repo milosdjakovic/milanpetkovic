@@ -13,14 +13,13 @@ export interface EventData {
 export interface AlbumData {
   cover: string;
   latest?: boolean;
+  year: string;
   rs: {
     title: string;
-    year: string;
     songs: string[];
   };
   en: {
     title: string;
-    year: string;
     songs: string[];
   };
 }
