@@ -18,7 +18,7 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
 ---
 
 <!-- Video section -->
-<div v-for="(video, i) in $page.lastVideo.edges">
+<div>
   <h1 id="video-title" class="text-2xl">{videoData[0].title[language]}</h1>
 
   <!-- Video -->
@@ -41,10 +41,12 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
 <!-- Playlist -->
 <ul class="mt-4 mb-12">
   {
-    videoData.map((video) => (
+    videoData.map((video, i) => (
       <li>
         <button
-          class="flex flex-row-reverse py-2 xl:flex-row sm:py-0 sm:my-2 focus:outline-none"
+          class={`${
+            i === 0 ? "text-fluo-green font-semibold" : ""
+          } flex flex-row-reverse py-2 xl:flex-row sm:py-0 sm:my-2 focus:outline-none text-gray-300 hover:text-white hover:shadow-bottom-fluo`}
           data-video-title={video.title[language]}
           data-video-link={video.link}
         >
@@ -101,6 +103,12 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
   const buttons: NodeListOf<HTMLButtonElement> =
     document.querySelectorAll("button")!;
 
+  function resetPlaylistItemStyles() {
+    buttons.forEach((button) => {
+      button.classList.remove("text-fluo-green", "font-semibold");
+    });
+  }
+
   function selectVideo(title: string, link: string) {
     videoTitle.textContent = title;
     videoPlayer.src = link;
@@ -112,11 +120,14 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
   }
 
   buttons.forEach((button) => {
-    button.addEventListener("click", () =>
+    button.addEventListener("click", () => {
+      resetPlaylistItemStyles();
+      button.classList.add("text-fluo-green", "font-semibold");
+
       selectVideo(
         button.dataset.videoTitle ?? "",
         button.dataset.videoLink ?? ""
-      )
-    );
+      );
+    });
   });
 </script>
