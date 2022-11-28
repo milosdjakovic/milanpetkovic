@@ -1,7 +1,21 @@
 ---
+import type { Language } from "../../bin/types";
+
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import DiscographyLayout from "../../layouts/DiscographyLayout.astro";
+
+import i18nData from "../../data/i18n_data.json";
+
+const language: Language = "rs";
 ---
 
-<BaseLayout title="Milan Petković" page="Discography" language="rs">
-  <main></main>
+<BaseLayout
+  title="Milan Petković"
+  page={i18nData.discography.title[language]}
+  language={language}
+>
+  <DiscographyLayout
+    title={i18nData.discography.title[language]}
+    language={language}
+  />
 </BaseLayout>
