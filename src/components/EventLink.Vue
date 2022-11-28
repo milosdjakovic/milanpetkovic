@@ -1,4 +1,3 @@
-import { Locale } from '../bin/types';
 <template>
   <a
     :href="event.link"
@@ -23,8 +22,10 @@ import { Locale } from '../bin/types';
 </template>
 
 <script lang="ts" setup>
+import { EventData, Locale } from "../bin/types";
+
 const { events } = defineProps<{
-  event: Event;
+  event: EventData;
   locale: Locale;
 }>();
 </script>

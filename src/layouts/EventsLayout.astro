@@ -1,21 +1,13 @@
 ---
-import type { Locale } from "../bin/types";
+import type { EventData, Locale } from "../bin/types";
 import EventLink from "../components/EventLink.vue";
 import UpcomingEvents from "../components/UpcomingEvents.vue";
-
-interface Event {
-  date: string;
-  time: string;
-  place: string;
-  town: string;
-  link: string;
-}
 
 export interface Props {
   upcomingEventsTitle: string;
   noEventsTitle: string;
   pastEventsTitle: string;
-  events: Event[];
+  events: EventData[];
   locale: Locale;
 }
 

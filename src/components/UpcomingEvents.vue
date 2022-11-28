@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Event, Locale } from "../bin/types";
+import type { EventData, Locale } from "../bin/types";
 import { onMounted, ref } from "vue";
 import EventLink from "../components/EventLink.vue";
 import { computed } from "@vue/reactivity";
@@ -23,14 +23,14 @@ import { computed } from "@vue/reactivity";
 const { events } = defineProps<{
   upcomingEventsTitle: string;
   noEventsTitle: string;
-  events: Event[];
+  events: EventData[];
   locale: Locale;
 }>();
 
-const upcomingEvents = ref<Event[]>([]);
+const upcomingEvents = ref<EventData[]>([]);
 const upcomingEventsExist = computed(() => upcomingEvents.value.length > 0);
 
-function checkForUpcomingEvents(events: Event[]) {
+function checkForUpcomingEvents(events: EventData[]) {
   upcomingEvents.value = events.filter((event) => {
     const eventDate = new Date(`${event.date}T${event.time}Z`).getTime();
     const currentDate = Date.now();

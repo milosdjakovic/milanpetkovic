@@ -1,21 +1,6 @@
 ---
-/* 
-  TODO: 
-  Make video accessible through URL query parameters.
-  When the page is loaded and there is no query parameter for 'video', load the first video.
-  If the query param exists, load the corresponding video.
-  On click, query param should be set as well.
-*/
-import type { Language } from "../bin/types";
+import type { Language, VideoData } from "../bin/types";
 
-interface VideoData {
-  id: string;
-  title: {
-    rs: string;
-    en: string;
-  };
-  url: string;
-}
 export interface Props {
   playlistTitle: string;
   language: Language;

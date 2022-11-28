@@ -1,48 +1,10 @@
 ---
-import { Image, Picture } from "@astrojs/image/components";
-import type { Language } from "../bin/types";
+import type { AlbumData, Language } from "../bin/types";
 import discographyData from "../data/discography.json";
 
-import leptir from "../images/album_covers/optimized/leptir.jpg";
-import uSrcu from "../images/album_covers/optimized/u_srcu.jpg";
-import doKrajaSveta from "../images/album_covers/optimized/do_kraja_sveta.jpg";
-import potvrdaOZivotu from "../images/album_covers/optimized/potvrda_o_zivotu.jpg";
-import naObali from "../images/album_covers/optimized/na_obali.jpg";
-import nada from "../images/album_covers/optimized/nada.jpg";
-import utociste from "../images/album_covers/optimized/utociste.jpg";
-import odraz from "../images/album_covers/optimized/odraz.jpg";
-import muzickaKutija from "../images/album_covers/optimized/muzicka_kutija.jpg";
+import AlbumList from "../components/AlbumList.astro";
 
-interface Album {
-  cover: string;
-  latest?: boolean;
-  rs: {
-    title: string;
-    year: string;
-    songs: string[];
-  };
-  en: {
-    title: string;
-    year: string;
-    songs: string[];
-  };
-}
-
-const albumCovers = {
-  leptir: leptir,
-  u_srcu: uSrcu,
-  do_kraja_sveta: doKrajaSveta,
-  potvrda_o_zivotu: potvrdaOZivotu,
-  na_obali: naObali,
-  nada: nada,
-  utociste: utociste,
-  odraz: odraz,
-  muzicka_kutija: muzickaKutija,
-} as const;
-
-type AlbumCovers = keyof typeof albumCovers;
-
-const discography: Album[] = discographyData;
+const discography: AlbumData[] = discographyData;
 
 export interface Props {
   title: string;
@@ -54,25 +16,4 @@ const { title, language } = Astro.props;
 
 <h1 class="text-2xl text-center">{title}</h1>
 
-<div class="flex justify-center flex-wrap gap-12 mt-8">
-  {
-    discography.map((album) => {
-      const cover = album.cover as AlbumCovers;
-
-      return (
-        <div class="flex flex-col items-center  cursor-pointer rounded-b-md group">
-          <Image
-            src={albumCovers[cover]}
-            alt={album[language].title}
-            class="border-2 border-transparent group-hover:border-fluo-green"
-            style={{ maxWidth: "20rem" }}
-          />
-
-          <p class="py-3 text-lg font-semibold group-hover:text-fluo-green">
-            {album[language].title}
-          </p>
-        </div>
-      );
-    })
-  }
-</div>
+<AlbumList language={language} discography={discography} />
