@@ -1,4 +1,11 @@
 ---
+/* 
+  TODO: 
+  Make video accessible through URL query parameters.
+  When the page is loaded and there is no query parameter for 'video', load the first video.
+  If the query param exists, load the corresponding video.
+  On click, query param should be set as well.
+*/
 import type { Language } from "../bin/types";
 
 interface VideoData {
@@ -6,7 +13,7 @@ interface VideoData {
     rs: string;
     en: string;
   };
-  link: string;
+  url: string;
 }
 export interface Props {
   videoData: VideoData[];
@@ -31,7 +38,7 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
       width="560"
       height="315"
       class="absolute top-0 left-0 w-full h-full"
-      src={videoData[0].link}
+      src={videoData[0].url}
       frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
@@ -44,11 +51,11 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
     videoData.map((video, i) => (
       <li>
         <button
-          class={`${
+          class={`video-button ${
             i === 0 ? "text-fluo-green font-semibold" : ""
           } flex flex-row-reverse py-2 xl:flex-row sm:py-0 sm:my-2 focus:outline-none text-gray-300 hover:text-white hover:shadow-bottom-fluo`}
           data-video-title={video.title[language]}
-          data-video-link={video.link}
+          data-video-url={video.url}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -100,18 +107,61 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
   const videoTitle: HTMLHeadElement = document.querySelector("#video-title")!;
   const videoPlayer: HTMLIFrameElement =
     document.querySelector("#video-player")!;
-  const buttons: NodeListOf<HTMLButtonElement> =
-    document.querySelectorAll("button")!;
+  const videoButtons: NodeListOf<HTMLButtonElement> =
+    document.querySelectorAll(".video-button")!;
+
+  const latestVideoTitle = videoButtons[0].dataset.videoTitle ?? "";
+  const latestVideoUrl = videoButtons[0].dataset.videoUrl ?? "";
+
+  function setVideoTitleAsURLQueryParameter(
+    videoTitle: string = latestVideoTitle
+  ) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("video", encodeURIComponent(videoTitle.toLowerCase()));
+    window.history.replaceState(null, "", url);
+  }
+
+  function getQueryParams(param: string): string {
+    const url: URL = new URL(window.location.href);
+    const params: URLSearchParams = url.searchParams;
+    const videoTitle: string = params.get(param) ?? "";
+
+    return decodeURIComponent(videoTitle);
+  }
+
+  function getVideoDataBasedOnURLQueryParameter(): {
+    title: string;
+    url: string;
+  } {
+    const videoTitleFromQueryParameter = getQueryParams("video");
+
+    let matchedVideoTitle = "";
+    let matchedVideoUrl = "";
+
+    videoButtons.forEach((videoButton) => {
+      const videoTitle = videoButton.dataset.videoTitle?.toLowerCase();
+
+      if (videoTitle !== videoTitleFromQueryParameter) return;
+
+      matchedVideoTitle = videoButton.dataset.videoTitle ?? latestVideoTitle;
+      matchedVideoUrl = videoButton.dataset.videoUrl ?? latestVideoUrl;
+    });
+
+    return {
+      title: matchedVideoTitle,
+      url: matchedVideoUrl,
+    };
+  }
 
   function resetPlaylistItemStyles() {
-    buttons.forEach((button) => {
-      button.classList.remove("text-fluo-green", "font-semibold");
+    videoButtons.forEach((videoButton) => {
+      videoButton.classList.remove("text-fluo-green", "font-semibold");
     });
   }
 
-  function selectVideo(title: string, link: string) {
+  function selectVideo(title: string, url: string) {
     videoTitle.textContent = title;
-    videoPlayer.src = link;
+    videoPlayer.src = url;
 
     window.scrollTo({
       top: 0,
@@ -119,15 +169,31 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
     });
   }
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
+  videoButtons.forEach((videoButton) => {
+    videoButton.addEventListener("click", () => {
       resetPlaylistItemStyles();
-      button.classList.add("text-fluo-green", "font-semibold");
+      videoButton.classList.add("text-fluo-green", "font-semibold");
 
       selectVideo(
-        button.dataset.videoTitle ?? "",
-        button.dataset.videoLink ?? ""
+        videoButton.dataset.videoTitle ?? "",
+        videoButton.dataset.videoUrl ?? ""
       );
+
+      setVideoTitleAsURLQueryParameter(videoButton.dataset.videoTitle ?? "");
     });
   });
+
+  function initializeUrlQueryParameter() {
+    const videoTitle: string = getQueryParams("video");
+    if (videoTitle !== "") return;
+    setVideoTitleAsURLQueryParameter(latestVideoTitle);
+  }
+
+  function setVideoDataBasedOnURLQueryParameters() {
+    const { title, url } = getVideoDataBasedOnURLQueryParameter();
+    selectVideo(title, url);
+  }
+
+  initializeUrlQueryParameter();
+  setVideoDataBasedOnURLQueryParameters();
 </script>
