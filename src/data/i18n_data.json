@@ -1,4 +1,10 @@
 {
+  "discography": {
+    "title": {
+      "rs": "Diskografija",
+      "en": "Discography"
+    }
+  },
   "events": {
     "upcoming": {
       "rs": "Predstojeći nastupi",
