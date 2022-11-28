@@ -16,12 +16,13 @@ interface VideoData {
   url: string;
 }
 export interface Props {
-  videoData: VideoData[];
+  playlistTitle: string;
   language: Language;
+  videoData: VideoData[];
   youtubeLinkLabel: string;
 }
 
-const { videoData, language, youtubeLinkLabel } = Astro.props;
+const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
 ---
 
 <!-- Video section -->
@@ -44,6 +45,9 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
       allowfullscreen></iframe>
   </div>
 </div>
+
+<h2 class="mt-8 text-lg font-semibold">{playlistTitle}</h2>
+<div class="border-b-2 border-x-gray-300"></div>
 
 <!-- Playlist -->
 <ul class="mt-4 mb-12">

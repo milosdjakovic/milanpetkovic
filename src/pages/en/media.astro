@@ -12,8 +12,9 @@ const language: Language = "en";
 
 <BaseLayout title="Milan Petković" page="Media" language="en">
   <MediaLayout
-    videoData={videoData}
+    playlistTitle={i18nData.media.playlist[language]}
     language={language}
+    videoData={videoData}
     youtubeLinkLabel={i18nData.media.youtube[language]}
   />
 </BaseLayout>
