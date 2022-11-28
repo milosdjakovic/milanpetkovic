@@ -169,20 +169,6 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
     });
   }
 
-  videoButtons.forEach((videoButton) => {
-    videoButton.addEventListener("click", () => {
-      resetPlaylistItemStyles();
-      videoButton.classList.add("text-fluo-green", "font-semibold");
-
-      selectVideo(
-        videoButton.dataset.videoTitle ?? "",
-        videoButton.dataset.videoUrl ?? ""
-      );
-
-      setVideoTitleAsURLQueryParameter(videoButton.dataset.videoTitle ?? "");
-    });
-  });
-
   function initializeUrlQueryParameter() {
     const videoTitle: string = getQueryParams("video");
     if (videoTitle !== "") return;
@@ -194,6 +180,46 @@ const { videoData, language, youtubeLinkLabel } = Astro.props;
     selectVideo(title, url);
   }
 
+  function markSelectedVideoButton(videoButton: HTMLButtonElement) {
+    resetPlaylistItemStyles();
+    videoButton.classList.add("text-fluo-green", "font-semibold");
+  }
+
+  function getVideoButtonElementByVideoTitle(title: string): HTMLButtonElement {
+    let matchedVideoButton: HTMLButtonElement = videoButtons[0];
+
+    videoButtons.forEach((videoButton) => {
+      if (videoButton.dataset.videoTitle?.toLowerCase() !== title) return;
+      matchedVideoButton = videoButton;
+    });
+
+    return matchedVideoButton;
+  }
+
+  function initializeEventListenerForVideoButton() {
+    videoButtons.forEach((videoButton) => {
+      videoButton.addEventListener("click", () => {
+        markSelectedVideoButton(videoButton);
+
+        selectVideo(
+          videoButton.dataset.videoTitle ?? "",
+          videoButton.dataset.videoUrl ?? ""
+        );
+
+        setVideoTitleAsURLQueryParameter(videoButton.dataset.videoTitle ?? "");
+      });
+    });
+  }
+
+  function initializeVideoPlayerState() {
+    const matchedVideoButton = getVideoButtonElementByVideoTitle(
+      getQueryParams("video")
+    );
+    markSelectedVideoButton(matchedVideoButton);
+    setVideoDataBasedOnURLQueryParameters();
+  }
+
+  initializeEventListenerForVideoButton();
   initializeUrlQueryParameter();
-  setVideoDataBasedOnURLQueryParameters();
+  initializeVideoPlayerState();
 </script>
