@@ -9,6 +9,7 @@
 import type { Language } from "../bin/types";
 
 interface VideoData {
+  id: string;
   title: {
     rs: string;
     en: string;
@@ -58,6 +59,7 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
           class={`video-button ${
             i === 0 ? "text-fluo-green font-semibold" : ""
           } flex flex-row-reverse py-2 xl:flex-row sm:py-0 sm:my-2 focus:outline-none text-gray-300 hover:text-white hover:shadow-bottom-fluo`}
+          data-video-id={video.id}
           data-video-title={video.title[language]}
           data-video-url={video.url}
         >
@@ -114,14 +116,13 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
   const videoButtons: NodeListOf<HTMLButtonElement> =
     document.querySelectorAll(".video-button")!;
 
+  const latestVideoId = videoButtons[0].dataset.videoId ?? "";
   const latestVideoTitle = videoButtons[0].dataset.videoTitle ?? "";
   const latestVideoUrl = videoButtons[0].dataset.videoUrl ?? "";
 
-  function setVideoTitleAsURLQueryParameter(
-    videoTitle: string = latestVideoTitle
-  ) {
+  function setVideoIdAsURLQueryParameter(videoId: string = latestVideoId) {
     const url = new URL(window.location.href);
-    url.searchParams.set("video", encodeURIComponent(videoTitle.toLowerCase()));
+    url.searchParams.set("video", encodeURIComponent(videoId));
     window.history.replaceState(null, "", url);
   }
 
@@ -137,15 +138,15 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
     title: string;
     url: string;
   } {
-    const videoTitleFromQueryParameter = getQueryParams("video");
+    const videoIdFromQueryParameter = getQueryParams("video");
 
     let matchedVideoTitle = "";
     let matchedVideoUrl = "";
 
     videoButtons.forEach((videoButton) => {
-      const videoTitle = videoButton.dataset.videoTitle?.toLowerCase();
+      const videoId = videoButton.dataset.videoId;
 
-      if (videoTitle !== videoTitleFromQueryParameter) return;
+      if (videoId !== videoIdFromQueryParameter) return;
 
       matchedVideoTitle = videoButton.dataset.videoTitle ?? latestVideoTitle;
       matchedVideoUrl = videoButton.dataset.videoUrl ?? latestVideoUrl;
@@ -176,9 +177,9 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
   }
 
   function initializeUrlQueryParameter() {
-    const videoTitle: string = getQueryParams("video");
-    if (videoTitle !== "") return;
-    setVideoTitleAsURLQueryParameter(latestVideoTitle);
+    const videoId: string = getQueryParams("video");
+    if (videoId !== "") return;
+    setVideoIdAsURLQueryParameter(latestVideoId);
   }
 
   function setVideoDataBasedOnURLQueryParameters() {
@@ -194,11 +195,11 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
     svgIcon?.classList.remove("hidden");
   }
 
-  function getVideoButtonElementByVideoTitle(title: string): HTMLButtonElement {
+  function getVideoButtonElementByVideoId(id: string): HTMLButtonElement {
     let matchedVideoButton: HTMLButtonElement = videoButtons[0];
 
     videoButtons.forEach((videoButton) => {
-      if (videoButton.dataset.videoTitle?.toLowerCase() !== title) return;
+      if (videoButton.dataset.videoId !== id) return;
       matchedVideoButton = videoButton;
     });
 
@@ -215,13 +216,13 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
           videoButton.dataset.videoUrl ?? ""
         );
 
-        setVideoTitleAsURLQueryParameter(videoButton.dataset.videoTitle ?? "");
+        setVideoIdAsURLQueryParameter(videoButton.dataset.videoId ?? "");
       });
     });
   }
 
   function initializeVideoPlayerState() {
-    const matchedVideoButton = getVideoButtonElementByVideoTitle(
+    const matchedVideoButton = getVideoButtonElementByVideoId(
       getQueryParams("video")
     );
     markSelectedVideoButton(matchedVideoButton);
