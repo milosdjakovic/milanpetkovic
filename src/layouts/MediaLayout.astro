@@ -63,7 +63,7 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="xl:-ml-8 xl:mr-2 icon icon-tabler icon-tabler-volume"
+            class="xl:-ml-8 xl:mr-2 icon icon-tabler icon-tabler-volume hidden"
             width="24"
             height="24"
             stroke-width="2"
@@ -160,6 +160,8 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
   function resetPlaylistItemStyles() {
     videoButtons.forEach((videoButton) => {
       videoButton.classList.remove("text-fluo-green", "font-semibold");
+      const svgIcon: SVGElement = videoButton.querySelector("svg")!;
+      svgIcon.classList.add("hidden");
     });
   }
 
@@ -187,6 +189,9 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
   function markSelectedVideoButton(videoButton: HTMLButtonElement) {
     resetPlaylistItemStyles();
     videoButton.classList.add("text-fluo-green", "font-semibold");
+
+    const svgIcon: SVGElement = videoButton.querySelector("svg")!;
+    svgIcon?.classList.remove("hidden");
   }
 
   function getVideoButtonElementByVideoTitle(title: string): HTMLButtonElement {
