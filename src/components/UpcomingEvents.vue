@@ -8,19 +8,20 @@
     v-for="event in upcomingEvents"
     :key="event.date + event.link"
   >
-    <EventLink :event="event" :locale="locale" />
+    <EventLink :eventData="event" :locale="locale" />
   </div>
 
   <div class="h-4"></div>
 </template>
 
 <script setup lang="ts">
+import EventLink from "./EventLink.vue";
+
 import type { EventData, Locale } from "../bin/types";
 import { onMounted, ref } from "vue";
-import EventLink from "../components/EventLink.vue";
 import { computed } from "@vue/reactivity";
 
-const { events } = defineProps<{
+const { upcomingEventsTitle, noEventsTitle, events, locale } = defineProps<{
   upcomingEventsTitle: string;
   noEventsTitle: string;
   events: EventData[];
@@ -31,8 +32,9 @@ const upcomingEvents = ref<EventData[]>([]);
 const upcomingEventsExist = computed(() => upcomingEvents.value.length > 0);
 
 function checkForUpcomingEvents(events: EventData[]) {
-  upcomingEvents.value = events.filter((event) => {
+  return events.filter((event) => {
     const eventDate = new Date(`${event.date}T${event.time}Z`).getTime();
+
     const currentDate = Date.now();
 
     return eventDate > currentDate;
@@ -40,7 +42,7 @@ function checkForUpcomingEvents(events: EventData[]) {
 }
 
 onMounted(() => {
-  checkForUpcomingEvents(events);
+  upcomingEvents.value = checkForUpcomingEvents(events);
 });
 </script>
 

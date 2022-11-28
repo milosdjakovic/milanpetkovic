@@ -1,6 +1,7 @@
 ---
 import type { EventData, Locale } from "../bin/types";
 import EventLink from "../components/EventLink.vue";
+
 import UpcomingEvents from "../components/UpcomingEvents.vue";
 
 export interface Props {
@@ -26,5 +27,19 @@ const { upcomingEventsTitle, noEventsTitle, pastEventsTitle, events, locale } =
 <div class="mt-6">
   <h2 class="text-2xl">{pastEventsTitle}</h2>
 
-  {events.map((event) => <EventLink event={event} locale={locale} />)}
+  {events.map((event) => <EventLink eventData={event} locale={locale} />)}
 </div>
+
+<script>
+  const eventLinks: NodeListOf<HTMLAnchorElement> =
+    document.querySelectorAll(".event-link");
+
+  eventLinks.forEach((eventLink) => {
+    const eventTime: number = parseInt(eventLink.dataset.time ?? "");
+    const currentTime: number = new Date().getTime();
+
+    if (eventTime < currentTime) return;
+
+    eventLink.classList.add("hidden");
+  });
+</script>
