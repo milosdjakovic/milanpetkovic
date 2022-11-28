@@ -21,11 +21,11 @@ const { title, articles } = Astro.props;
       href={article.link}
       class="block  mt-8 first:mt-0 group hover:shadow-bottom-fluo"
     >
-      <p class="text-lg max-w-xl font-semibold group-hover:text-fluo-green">
+      <p class="text-lg max-w-2xl font-semibold group-hover:text-fluo-green">
         {article.title}
       </p>
 
-      <p class="underline">{article.source}</p>
+      <p class="underline text-fluo-green">{article.source}</p>
     </a>
   ))
 }
