@@ -1,6 +1,5 @@
 <template>
   <h2 class="text-3xl text-fluo-green">{{ upcomingEventTitle }}</h2>
-
   <section
     v-if="upcomingEventsExist"
     v-for="event in upcomingEvents"
@@ -32,9 +31,9 @@ const { language, events, locale } = defineProps<{
 const upcomingEvents = ref<EventData[]>([]);
 const upcomingEventsExist = computed(() => upcomingEvents.value.length > 0);
 const upcomingEventTitle = computed(() =>
-  upcomingEventsExist
+  upcomingEventsExist.value
     ? i18nData.events.upcoming[language]
-    : i18nData.events.none
+    : i18nData.events.none[language]
 );
 
 function checkForUpcomingEvents(events: EventData[]) {
