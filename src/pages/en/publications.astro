@@ -4,6 +4,7 @@ import type { Language } from "../../bin/types";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PublicationsLayout from "../../layouts/PublicationsLayout.astro";
 
+import i18nData from "../../data/i18n_data.json";
 import publicationsData from "../../data/publications.json";
 
 const language: Language = "en";
@@ -11,11 +12,11 @@ const language: Language = "en";
 
 <BaseLayout
   title="Milan Petković"
-  page={publicationsData[language].title}
+  page={i18nData.publications.title[language]}
   language={language}
 >
   <PublicationsLayout
-    title={publicationsData[language].title}
-    articles={publicationsData.articles}
+    title={i18nData.publications.title[language]}
+    articles={publicationsData}
   />
 </BaseLayout>

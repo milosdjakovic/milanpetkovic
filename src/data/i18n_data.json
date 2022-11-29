@@ -1,8 +1,17 @@
 {
+  "home": {},
   "discography": {
     "title": {
       "rs": "Diskografija",
       "en": "Discography"
+    },
+    "subtitle": {
+      "rs": "Najnovije izdanje",
+      "en": "Latest Release"
+    },
+    "complete_discography": {
+      "rs": "Kompletna diskografija",
+      "en": "Complete discography"
     }
   },
   "events": {
@@ -35,6 +44,28 @@
     "youtube": {
       "rs": "Oficijalni YouTube kanal",
       "en": "Official YouTube Channel"
+    },
+    "latest_video": {
+      "rs": "Najnoviji video",
+      "en": "Latest video"
+    },
+    "all_music_videos": {
+      "rs": "Svi muzički spotovi",
+      "en": "All music videos"
+    }
+  },
+  "publications": {
+    "title": {
+      "rs": "Publikacije",
+      "en": "Publications"
+    },
+    "latest_article": {
+      "rs": "Zadnji članak",
+      "en": "Zadnji članak"
+    },
+    "all_articles": {
+      "rs": "Svi članci",
+      "en": "All articles"
     }
   }
 }
