@@ -42,7 +42,7 @@ const { language, locale } = Astro.props;
     href={`discography`}
     class="inline-block mt-6 cursor-pointer text-fluo-green underline opacity-75 hover:opacity-100"
   >
-    {i18nData.discography.latestRelease[language]}
+    {i18nData.discography.completeDiscography[language]}
   </a>
 </div>
 
@@ -77,7 +77,7 @@ const { language, locale } = Astro.props;
   <PublicationLink publication={latestPublication} centered />
 
   <a
-    href="media"
+    href="publications"
     class="inline-block mt-6 cursor-pointer text-fluo-green underline opacity-75 hover:opacity-100"
   >
     {i18nData.publications.allPublications[language]}
