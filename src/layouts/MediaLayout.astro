@@ -1,8 +1,10 @@
 ---
-import type { Language } from "../bin/types";
+import type { Language, VideoData } from "../bin/types";
 
 import i18nData from "../data/i18n_data.json";
 import videoData from "../data/videos.json";
+
+const videos: VideoData[] = videoData;
 
 export interface Props {
   language: Language;
@@ -13,7 +15,7 @@ const { language } = Astro.props;
 
 <!-- Video section -->
 <div>
-  <h1 id="video-title" class="text-2xl">{videoData[0].title[language]}</h1>
+  <h1 id="video-title" class="text-2xl">{videos[0].title[language]}</h1>
 
   <!-- Video -->
   <div
@@ -25,7 +27,7 @@ const { language } = Astro.props;
       width="560"
       height="315"
       class="absolute top-0 left-0 w-full h-full"
-      src={videoData[0].url}
+      src={videos[0].url}
       frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
@@ -38,7 +40,7 @@ const { language } = Astro.props;
 <!-- Playlist -->
 <ul class="mt-4 mb-12">
   {
-    videoData.map((video, i) => (
+    videos.map((video, i) => (
       <li>
         <button
           class={`video-button ${
