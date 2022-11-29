@@ -24,15 +24,16 @@ const { upcomingEventsTitle, noEventsTitle, pastEventsTitle, events, locale } =
   client:load
 />
 
-<div class="mt-6">
+<div id="past-events" class="mt-6 opacity-0">
   <h2 class="text-2xl">{pastEventsTitle}</h2>
 
   {events.map((event) => <EventLink eventData={event} locale={locale} />)}
 </div>
 
 <script>
+  const pastEvents: HTMLDivElement = document.querySelector("#past-events")!;
   const eventLinks: NodeListOf<HTMLAnchorElement> =
-    document.querySelectorAll(".event-link");
+    pastEvents.querySelectorAll(".event-link");
 
   eventLinks.forEach((eventLink) => {
     const eventTime: number = parseInt(eventLink.dataset.time ?? "");
@@ -42,4 +43,6 @@ const { upcomingEventsTitle, noEventsTitle, pastEventsTitle, events, locale } =
 
     eventLink.classList.add("hidden");
   });
+
+  pastEvents.classList.remove("opacity-0");
 </script>
