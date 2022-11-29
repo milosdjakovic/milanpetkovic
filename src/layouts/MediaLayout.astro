@@ -1,14 +1,14 @@
 ---
-import type { Language, VideoData } from "../bin/types";
+import type { Language } from "../bin/types";
+
+import i18nData from "../data/i18n_data.json";
+import videoData from "../data/videos.json";
 
 export interface Props {
-  playlistTitle: string;
   language: Language;
-  videoData: VideoData[];
-  youtubeLinkLabel: string;
 }
 
-const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
+const { language } = Astro.props;
 ---
 
 <!-- Video section -->
@@ -32,7 +32,7 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
   </div>
 </div>
 
-<h2 class="mt-8 text-lg font-semibold">{playlistTitle}</h2>
+<h2 class="mt-8 text-lg font-semibold">{i18nData.media.playlist[language]}</h2>
 <div class="border-b-2 border-x-gray-300"></div>
 
 <!-- Playlist -->
@@ -91,7 +91,7 @@ const { playlistTitle, language, videoData, youtubeLinkLabel } = Astro.props;
     <path d="M10 9l5 3l-5 3z"></path>
   </svg>
 
-  {youtubeLinkLabel}
+  {i18nData.media.youtube[language]}
 </a>
 
 <script>

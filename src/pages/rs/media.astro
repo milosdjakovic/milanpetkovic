@@ -4,17 +4,9 @@ import type { Language } from "../../bin/types";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MediaLayout from "../../layouts/MediaLayout.astro";
 
-import i18nData from "../../data/i18n_data.json";
-import videoData from "../../data/videos.json";
-
 const language: Language = "rs";
 ---
 
-<BaseLayout title="Milan Petković" page="Media" language="rs">
-  <MediaLayout
-    playlistTitle={i18nData.media.playlist[language]}
-    language={language}
-    videoData={videoData}
-    youtubeLinkLabel={i18nData.media.youtube[language]}
-  />
+<BaseLayout title="Milan Petković" page="Media" language={language}>
+  <MediaLayout language={language} />
 </BaseLayout>
