@@ -32,3 +32,9 @@ export interface VideoData {
   };
   url: string;
 }
+
+export interface PublicationData {
+  title: string;
+  url: string;
+  source: string;
+}

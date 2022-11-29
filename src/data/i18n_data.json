@@ -58,13 +58,13 @@
       "rs": "Publikacije",
       "en": "Publications"
     },
-    "latestArticle": {
-      "rs": "Zadnji članak",
-      "en": "Zadnji članak"
+    "latestPublication": {
+      "rs": "Zadnja publikacija",
+      "en": "Latest publications"
     },
-    "allArticles": {
-      "rs": "Svi članci",
-      "en": "All articles"
+    "allPublications": {
+      "rs": "Sve publikacije",
+      "en": "All publications"
     }
   },
   "biography": {

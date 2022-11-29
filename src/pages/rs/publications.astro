@@ -5,7 +5,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PublicationsLayout from "../../layouts/PublicationsLayout.astro";
 
 import i18nData from "../../data/i18n_data.json";
-import publicationsData from "../../data/publications.json";
 
 const language: Language = "rs";
 ---
@@ -15,8 +14,5 @@ const language: Language = "rs";
   page={i18nData.publications.title[language]}
   language={language}
 >
-  <PublicationsLayout
-    title={i18nData.publications.title[language]}
-    articles={publicationsData}
-  />
+  <PublicationsLayout language={language} />
 </BaseLayout>
