@@ -48,7 +48,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
     <div class="flex gap-1">
       <LanguageSwitcher language={language} />
-      <SidebarNavigation />
+      <SidebarNavigation language={language} currentPath={currentPath} />
     </div>
   </div>
 </header>
