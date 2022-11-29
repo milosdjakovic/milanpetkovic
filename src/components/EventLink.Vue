@@ -2,14 +2,14 @@
   <a
     :href="eventData.link"
     :data-time="new Date(`${eventData.date}T${eventData.time}Z`).getTime()"
-    class="event-link block pb-3 mt-4 transition-colors duration-300 ease-in-out cursor-pointer group hover:shadow-bottom-fluo"
+    class="event-link block pb-3 mt-4 opacity-80 hover:opacity-100 transition-colors duration-300 ease-in-out cursor-pointer hover:shadow-bottom-fluo"
     target="_blank"
   >
-    <p class="text-xl group-hover:text-fluo-green">{{ eventData.place }}</p>
-    <p class="text-sm font-bold text-gray-400 group-hover:text-fluo-green">
+    <p class="text-xl">{{ eventData.place }}</p>
+    <p class="text-sm font-bold text-gray-400">
       {{ eventData.town }}
     </p>
-    <p class="font-bold text-fluo-green group-hover:text-gray-400">
+    <p class="font-bold text-fluo-green">
       {{
         new Date(`${eventData.date}T${eventData.time}Z`).toLocaleDateString(
           locale,
