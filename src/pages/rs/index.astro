@@ -1,12 +1,13 @@
 ---
-import type { Language } from "../../bin/types";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { Language, Locale } from "../../bin/types";
 
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import IndexLayout from "../../layouts/IndexLayout.astro";
 
 const language: Language = "rs";
+const locale: Locale = "sr-Latn";
 ---
 
 <BaseLayout title="Milan Petković" page="Home" language={language}>
-  <IndexLayout language={language} />
+  <IndexLayout language={language} locale={locale} />
 </BaseLayout>
