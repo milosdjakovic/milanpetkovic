@@ -1,17 +1,26 @@
 ---
-import type { AlbumData, Language, Locale, VideoData } from "../bin/types";
+import type {
+  AlbumData,
+  Language,
+  Locale,
+  PublicationData,
+  VideoData,
+} from "../bin/types";
 
 import AlbumList from "../components/AlbumList.astro";
 import UpcomingEvents from "../components/UpcomingEvents.vue";
 import VideoPlayer from "../components/VideoPlayer.astro";
+import PublicationLink from "../components/PublicationLink.astro";
 
 import i18nData from "../data/i18n_data.json";
 import eventsData from "../data/events.json";
 import discographyData from "../data/discography.json";
 import videoData from "../data/videos.json";
+import publicationsData from "../data/publications.json";
 
 const discography: AlbumData[] = discographyData;
 const latestVideo: VideoData = videoData[0];
+const latestPublication: PublicationData = publicationsData[0];
 
 export interface Props {
   language: Language;
@@ -47,7 +56,7 @@ const { language, locale } = Astro.props;
   />
 </div>
 
-<!-- Featured Video -->
+<!-- Latest video -->
 <div class="mt-16 text-center">
   <h2 class="text-2xl">{i18nData.media.latestVideo[language]}</h2>
 
@@ -58,5 +67,19 @@ const { language, locale } = Astro.props;
     class="inline-block mt-6 cursor-pointer text-fluo-green underline opacity-75 hover:opacity-100"
   >
     {i18nData.media.allMusicVideos[language]}
+  </a>
+</div>
+
+<!-- Latest publication -->
+<div class="mt-16 text-center">
+  <h2 class="text-2xl">{i18nData.publications.latestPublication[language]}</h2>
+
+  <PublicationLink publication={latestPublication} centered />
+
+  <a
+    href="media"
+    class="inline-block mt-6 cursor-pointer text-fluo-green underline opacity-75 hover:opacity-100"
+  >
+    {i18nData.publications.allPublications[language]}
   </a>
 </div>
