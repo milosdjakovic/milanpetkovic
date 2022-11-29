@@ -49,7 +49,7 @@ const { language, discography } = Astro.props;
               style={{ maxWidth: "20rem" }}
             />
 
-            <ol class="hidden lg:block p-4 list-decimal inset-0 list-inside opacity-0 group-hover:opacity-100 ease-in-out transition-opacity duration-200 absolute bg-gray-900/90">
+            <ol class="hidden absolute bg-black/60 backdrop-blur-sm lg:block p-4 list-decimal inset-0 list-inside opacity-0 group-hover:opacity-100 ease-in-out transition-opacity duration-200 ">
               {album[language].songs.map((song) => (
                 <li>{song}</li>
               ))}
@@ -61,7 +61,7 @@ const { language, discography } = Astro.props;
             <span class="-mt-1 text-sm text-gray-300">({album.year})</span>
           </p>
 
-          <ol class="mt-1 border-t-2 pt-1 lg:hidden blocklist-decimal inset-0 list-inside">
+          <ol class="mt-1 border-t-2 pt-1 lg:hidden block list-decimal inset-0 list-inside">
             {album[language].songs.map((song) => (
               <li>{song}</li>
             ))}
