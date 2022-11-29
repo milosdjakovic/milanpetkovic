@@ -3,14 +3,17 @@ import type { PublicationData } from "../bin/types";
 
 export interface Props {
   publication: PublicationData;
+  centered?: boolean;
 }
 
-const { publication } = Astro.props;
+const { publication, centered } = Astro.props;
 ---
 
 <a
   href={publication.url}
-  class="block mt-8 first:mt-0 group hover:shadow-bottom-fluo"
+  class={`${
+    centered ? "flex flex-col items-center" : "hover:shadow-bottom-fluo"
+  } block mt-8 first:mt-0 group `}
 >
   <p class="text-lg max-w-2xl font-semibold group-hover:text-fluo-green">
     {publication.title}
