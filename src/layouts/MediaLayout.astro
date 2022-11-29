@@ -16,7 +16,7 @@ const { language } = Astro.props;
 ---
 
 <!-- Video section -->
-<div>
+<media-player>
   <h1 id="video-title" class="text-2xl">{videos[0].title[language]}</h1>
 
   <VideoPlayer url={videos[0].url} />
@@ -84,129 +84,138 @@ const { language } = Astro.props;
 
     {i18nData.media.youtube[language]}
   </a>
+</media-player>
 
-  <script>
-    const videoTitle: HTMLHeadElement = document.querySelector("#video-title")!;
-    const videoPlayer: HTMLIFrameElement =
-      document.querySelector("#video-player")!;
-    const videoButtons: NodeListOf<HTMLButtonElement> =
-      document.querySelectorAll(".video-button")!;
+<script>
+  class MediaPlayer extends HTMLElement {
+    constructor() {
+      super();
 
-    const latestVideoId = videoButtons[0].dataset.videoId ?? "";
-    const latestVideoTitle = videoButtons[0].dataset.videoTitle ?? "";
-    const latestVideoUrl = videoButtons[0].dataset.videoUrl ?? "";
+      const videoTitle: HTMLHeadElement = this.querySelector("#video-title")!;
+      const videoPlayer: HTMLIFrameElement =
+        this.querySelector("#video-player")!;
+      const videoButtons: NodeListOf<HTMLButtonElement> =
+        this.querySelectorAll(".video-button")!;
 
-    function setVideoIdAsURLQueryParameter(videoId: string = latestVideoId) {
-      const url = new URL(window.location.href);
-      url.searchParams.set("video", encodeURIComponent(videoId));
-      window.history.replaceState(null, "", url);
-    }
+      const latestVideoId = videoButtons[0].dataset.videoId ?? "";
+      const latestVideoTitle = videoButtons[0].dataset.videoTitle ?? "";
+      const latestVideoUrl = videoButtons[0].dataset.videoUrl ?? "";
 
-    function getQueryParams(param: string): string {
-      const url: URL = new URL(window.location.href);
-      const params: URLSearchParams = url.searchParams;
-      const videoTitle: string = params.get(param) ?? "";
+      function setVideoIdAsURLQueryParameter(videoId: string = latestVideoId) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("video", encodeURIComponent(videoId));
+        window.history.replaceState(null, "", url);
+      }
 
-      return decodeURIComponent(videoTitle);
-    }
+      function getQueryParams(param: string): string {
+        const url: URL = new URL(window.location.href);
+        const params: URLSearchParams = url.searchParams;
+        const videoTitle: string = params.get(param) ?? "";
 
-    function getVideoDataBasedOnURLQueryParameter(): {
-      title: string;
-      url: string;
-    } {
-      const videoIdFromQueryParameter = getQueryParams("video");
+        return decodeURIComponent(videoTitle);
+      }
 
-      let matchedVideoTitle = "";
-      let matchedVideoUrl = "";
+      function getVideoDataBasedOnURLQueryParameter(): {
+        title: string;
+        url: string;
+      } {
+        const videoIdFromQueryParameter = getQueryParams("video");
 
-      videoButtons.forEach((videoButton) => {
-        const videoId = videoButton.dataset.videoId;
+        let matchedVideoTitle = "";
+        let matchedVideoUrl = "";
 
-        if (videoId !== videoIdFromQueryParameter) return;
+        videoButtons.forEach((videoButton) => {
+          const videoId = videoButton.dataset.videoId;
 
-        matchedVideoTitle = videoButton.dataset.videoTitle ?? latestVideoTitle;
-        matchedVideoUrl = videoButton.dataset.videoUrl ?? latestVideoUrl;
-      });
+          if (videoId !== videoIdFromQueryParameter) return;
 
-      return {
-        title: matchedVideoTitle,
-        url: matchedVideoUrl,
-      };
-    }
-
-    function resetPlaylistItemStyles() {
-      videoButtons.forEach((videoButton) => {
-        videoButton.classList.remove("text-fluo-green", "font-semibold");
-        const svgIcon: SVGElement = videoButton.querySelector("svg")!;
-        svgIcon.classList.add("hidden");
-      });
-    }
-
-    function selectVideo(title: string, url: string) {
-      videoTitle.textContent = title;
-      videoPlayer.src = url;
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-
-    function initializeUrlQueryParameter() {
-      const videoId: string = getQueryParams("video");
-      if (videoId !== "") return;
-      setVideoIdAsURLQueryParameter(latestVideoId);
-    }
-
-    function setVideoDataBasedOnURLQueryParameters() {
-      const { title, url } = getVideoDataBasedOnURLQueryParameter();
-      selectVideo(title, url);
-    }
-
-    function markSelectedVideoButton(videoButton: HTMLButtonElement) {
-      resetPlaylistItemStyles();
-      videoButton.classList.add("text-fluo-green", "font-semibold");
-
-      const svgIcon: SVGElement = videoButton.querySelector("svg")!;
-      svgIcon?.classList.remove("hidden");
-    }
-
-    function getVideoButtonElementByVideoId(id: string): HTMLButtonElement {
-      let matchedVideoButton: HTMLButtonElement = videoButtons[0];
-
-      videoButtons.forEach((videoButton) => {
-        if (videoButton.dataset.videoId !== id) return;
-        matchedVideoButton = videoButton;
-      });
-
-      return matchedVideoButton;
-    }
-
-    function initializeEventListenerForVideoButton() {
-      videoButtons.forEach((videoButton) => {
-        videoButton.addEventListener("click", () => {
-          markSelectedVideoButton(videoButton);
-
-          selectVideo(
-            videoButton.dataset.videoTitle ?? "",
-            videoButton.dataset.videoUrl ?? ""
-          );
-
-          setVideoIdAsURLQueryParameter(videoButton.dataset.videoId ?? "");
+          matchedVideoTitle =
+            videoButton.dataset.videoTitle ?? latestVideoTitle;
+          matchedVideoUrl = videoButton.dataset.videoUrl ?? latestVideoUrl;
         });
-      });
-    }
 
-    function initializeVideoPlayerState() {
-      const matchedVideoButton = getVideoButtonElementByVideoId(
-        getQueryParams("video")
-      );
-      markSelectedVideoButton(matchedVideoButton);
-      setVideoDataBasedOnURLQueryParameters();
-    }
+        return {
+          title: matchedVideoTitle,
+          url: matchedVideoUrl,
+        };
+      }
 
-    initializeEventListenerForVideoButton();
-    initializeUrlQueryParameter();
-    initializeVideoPlayerState();
-  </script>
-</div>
+      function resetPlaylistItemStyles() {
+        videoButtons.forEach((videoButton) => {
+          videoButton.classList.remove("text-fluo-green", "font-semibold");
+          const svgIcon: SVGElement = videoButton.querySelector("svg")!;
+          svgIcon.classList.add("hidden");
+        });
+      }
+
+      function selectVideo(title: string, url: string) {
+        videoTitle.textContent = title;
+        videoPlayer.src = url;
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      function initializeUrlQueryParameter() {
+        const videoId: string = getQueryParams("video");
+        if (videoId !== "") return;
+        setVideoIdAsURLQueryParameter(latestVideoId);
+      }
+
+      function setVideoDataBasedOnURLQueryParameters() {
+        const { title, url } = getVideoDataBasedOnURLQueryParameter();
+        selectVideo(title, url);
+      }
+
+      function markSelectedVideoButton(videoButton: HTMLButtonElement) {
+        resetPlaylistItemStyles();
+        videoButton.classList.add("text-fluo-green", "font-semibold");
+
+        const svgIcon: SVGElement = videoButton.querySelector("svg")!;
+        svgIcon?.classList.remove("hidden");
+      }
+
+      function getVideoButtonElementByVideoId(id: string): HTMLButtonElement {
+        let matchedVideoButton: HTMLButtonElement = videoButtons[0];
+
+        videoButtons.forEach((videoButton) => {
+          if (videoButton.dataset.videoId !== id) return;
+          matchedVideoButton = videoButton;
+        });
+
+        return matchedVideoButton;
+      }
+
+      function initializeEventListenerForVideoButton() {
+        videoButtons.forEach((videoButton) => {
+          videoButton.addEventListener("click", () => {
+            markSelectedVideoButton(videoButton);
+
+            selectVideo(
+              videoButton.dataset.videoTitle ?? "",
+              videoButton.dataset.videoUrl ?? ""
+            );
+
+            setVideoIdAsURLQueryParameter(videoButton.dataset.videoId ?? "");
+          });
+        });
+      }
+
+      function initializeVideoPlayerState() {
+        const matchedVideoButton = getVideoButtonElementByVideoId(
+          getQueryParams("video")
+        );
+        markSelectedVideoButton(matchedVideoButton);
+        setVideoDataBasedOnURLQueryParameters();
+      }
+
+      initializeEventListenerForVideoButton();
+      initializeUrlQueryParameter();
+      initializeVideoPlayerState();
+    }
+  }
+
+  customElements.define("media-player", MediaPlayer);
+</script>

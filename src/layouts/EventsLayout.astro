@@ -15,32 +15,42 @@ export interface Props {
 const { language, events, locale } = Astro.props;
 ---
 
-<UpcomingEvents
-  language={language}
-  events={events}
-  locale={locale}
-  client:load
-/>
+<event-list>
+  <UpcomingEvents
+    language={language}
+    events={events}
+    locale={locale}
+    client:load
+  />
 
-<section id="past-events" class="mt-6 opacity-0">
-  <h2 class="text-2xl">{i18nData.events.past[language]}</h2>
+  <section id="past-events" class="mt-6 opacity-0">
+    <h2 class="text-2xl">{i18nData.events.past[language]}</h2>
 
-  {events.map((event) => <EventLink eventData={event} locale={locale} />)}
-</section>
+    {events.map((event) => <EventLink eventData={event} locale={locale} />)}
+  </section>
+</event-list>
 
 <script>
-  const pastEvents: HTMLDivElement = document.querySelector("#past-events")!;
-  const eventLinks: NodeListOf<HTMLAnchorElement> =
-    pastEvents.querySelectorAll(".event-link");
+  class EventList extends HTMLElement {
+    constructor() {
+      super();
 
-  eventLinks.forEach((eventLink) => {
-    const eventTime: number = parseInt(eventLink.dataset.time ?? "");
-    const currentTime: number = new Date().getTime();
+      const pastEvents: HTMLDivElement = this.querySelector("#past-events")!;
+      const eventLinks: NodeListOf<HTMLAnchorElement> =
+        pastEvents.querySelectorAll(".event-link");
 
-    if (eventTime < currentTime) return;
+      eventLinks.forEach((eventLink) => {
+        const eventTime: number = parseInt(eventLink.dataset.time ?? "");
+        const currentTime: number = new Date().getTime();
 
-    eventLink.classList.add("hidden");
-  });
+        if (eventTime < currentTime) return;
 
-  pastEvents.classList.remove("opacity-0");
+        eventLink.classList.add("hidden");
+      });
+
+      pastEvents.classList.remove("opacity-0");
+    }
+  }
+
+  customElements.define("event-list", EventList);
 </script>

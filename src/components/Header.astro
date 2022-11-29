@@ -3,7 +3,7 @@ import type { Language } from "../bin/types";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 import routeData from "../data/route_data.json";
-import SidebarNavigation from "./SidebarNavigation.astro";
+import MobileMenu from "./MobileMenu.astro";
 
 export interface Props {
   title: string;
@@ -48,7 +48,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
     <div class="flex gap-1">
       <LanguageSwitcher language={language} />
-      <SidebarNavigation language={language} currentPath={currentPath} />
+      <MobileMenu language={language} currentPath={currentPath} />
     </div>
   </div>
 </header>

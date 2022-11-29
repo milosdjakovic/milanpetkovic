@@ -1,0 +1,158 @@
+---
+import darkLeather from "../images/dark_leather.png";
+import routeData from "../data/route_data.json";
+import type { Language } from "../bin/types";
+
+export interface Props {
+  language: Language;
+  currentPath: string;
+}
+
+const { language, currentPath } = Astro.props;
+---
+
+<mobile-menu>
+  <!-- Toggle menu button -->
+  <button
+    id="menu-button"
+    class="z-30 relative w-10 h-full flex items-center justify-center lg:hidden focus:outline-none hover:text-fluo-green"
+  >
+    <svg
+      id="menu-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-6 icon icon-tabler icon-tabler-menu"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z"></path>
+      <line x1="4" y1="8" x2="20" y2="8"></line>
+      <line x1="4" y1="16" x2="20" y2="16"></line>
+    </svg>
+
+    <svg
+      id="x-icon"
+      xmlns="http://www.w3.org/2000/svg"
+      class="hidden w-6 icon icon-tabler icon-tabler-x"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z"></path>
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <!-- Backdrop -->
+  <div
+    id="side-panel-backdrop"
+    class="z-10 fixed hidden opacity-0 inset-0 bg-black/70 transition duration-300 ease-in-out"
+  >
+  </div>
+
+  <!-- Navigation menu -->
+  <nav
+    id="side-panel"
+    class="z-20 fixed hidden items-center sm:pr-20 sm:-mr-20 justify-center bottom-0 top-0 right-0 w-full sm:max-w-sm transition duration-300 ease-in-out shadow-xl"
+    style={{ backgroundImage: `url(${darkLeather.src})` }}
+  >
+    <div class="-mt-24 flex flex-col items-center max-w-lg">
+      {
+        routeData.routes.map((route, i) => {
+          const formattedRoute: string = route ? `${route}/` : "";
+          const path: string = `${language}/${formattedRoute}`;
+
+          return (
+            <a
+              href={`/${path}`}
+              class={currentPath === `${path}` ? "link link__active" : "link"}
+            >
+              <span>{routeData.links[language][i]}</span>
+            </a>
+          );
+        })
+      }
+    </div>
+  </nav>
+</mobile-menu>
+
+<script>
+  import { animate, spring } from "motion";
+
+  class MobileMenu extends HTMLElement {
+    constructor() {
+      super();
+
+      const menuButton: HTMLButtonElement = this.querySelector("#menu-button")!;
+      const menuIcon: SVGElement = this.querySelector("#menu-icon")!;
+      const xIcon: SVGElement = this.querySelector("#x-icon")!;
+
+      const sidePanel: HTMLButtonElement = this.querySelector("#side-panel")!;
+      const sidePanelBackdrop: HTMLButtonElement = this.querySelector(
+        "#side-panel-backdrop"
+      )!;
+
+      let menuVisible = false;
+
+      function toggleMenu() {
+        menuVisible = !menuVisible;
+        menuIcon.classList.toggle("hidden");
+        xIcon.classList.toggle("hidden");
+
+        if (menuVisible) {
+          sidePanel.classList.toggle("flex");
+          sidePanel.classList.toggle("hidden");
+          sidePanelBackdrop.classList.remove("hidden");
+
+          setTimeout(() => {
+            sidePanelBackdrop.classList.toggle("opacity-0");
+            sidePanelBackdrop.classList.toggle("opacity-100");
+          }, 10);
+
+          animate(
+            sidePanel,
+            { x: [100, 0], opacity: 1 },
+            { duration: 0.3, easing: spring() }
+          );
+        } else {
+          animate(
+            sidePanel,
+            { x: [0, 100], opacity: 0 },
+            { duration: 0.3, easing: spring() }
+          );
+
+          sidePanelBackdrop.classList.toggle("opacity-0");
+          sidePanelBackdrop.classList.toggle("opacity-100");
+
+          setTimeout(() => {
+            sidePanel.classList.toggle("flex");
+            sidePanel.classList.toggle("hidden");
+            sidePanelBackdrop.classList.add("hidden");
+          }, 320);
+        }
+      }
+
+      menuButton.addEventListener("click", toggleMenu);
+      sidePanelBackdrop.addEventListener("click", toggleMenu);
+    }
+  }
+
+  customElements.define("mobile-menu", MobileMenu);
+</script>
+
+<style>
+  .link {
+    @apply flex items-center h-16 px-6 text-gray-500 border-2 border-transparent rounded-md hover:text-gray-100;
+  }
+
+  .link__active {
+    @apply text-fluo-green border-fluo-green;
+  }
+</style>

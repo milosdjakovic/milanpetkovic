@@ -8,7 +8,7 @@ export interface Props {
 const { language } = Astro.props;
 ---
 
-<div class="flex text-sm">
+<language-switcher class="flex text-sm">
   <button
     class={language === "en" ? "lang-btn lang-btn__active" : "lang-btn"}
     data-lang="en">EN</button
@@ -18,7 +18,40 @@ const { language } = Astro.props;
     class={language === "rs" ? "lang-btn lang-btn__active" : "lang-btn"}
     data-lang="rs">RS</button
   >
-</div>
+</language-switcher>
+
+<script>
+  import type { Language } from "../bin/types";
+  import { setLanguage } from "../bin/language";
+
+  class LanguageSwitcher extends HTMLElement {
+    constructor() {
+      super();
+
+      const buttons = this.querySelectorAll(
+        ".lang-btn"
+      ) as NodeListOf<HTMLElement>;
+
+      function switchLanguage(language: Language) {
+        const pathFragments: string[] = window.location.pathname.split("/");
+        pathFragments[1] = language;
+        const newPath: string = pathFragments.join("/");
+        window.location.href = newPath;
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const language: Language = button.dataset.lang as Language;
+          const selectedLanguage = language;
+          switchLanguage(selectedLanguage);
+          setLanguage(selectedLanguage);
+        });
+      });
+    }
+  }
+
+  customElements.define("language-switcher", LanguageSwitcher);
+</script>
 
 <style>
   .lang-btn {
@@ -28,28 +61,3 @@ const { language } = Astro.props;
     @apply text-fluo-green;
   }
 </style>
-
-<script>
-  import type { Language } from "../bin/types";
-  import { setLanguage } from "../bin/language";
-
-  const buttons = document.querySelectorAll(
-    ".lang-btn"
-  ) as NodeListOf<HTMLElement>;
-
-  function switchLanguage(language: Language) {
-    const pathFragments: string[] = window.location.pathname.split("/");
-    pathFragments[1] = language;
-    const newPath: string = pathFragments.join("/");
-    window.location.href = newPath;
-  }
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const language: Language = button.dataset.lang as Language;
-      const selectedLanguage = language;
-      switchLanguage(selectedLanguage);
-      setLanguage(selectedLanguage);
-    });
-  });
-</script>
