@@ -5,7 +5,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import BiographyLayout from "../../layouts/BiographyLayout.astro";
 
 import i18nData from "../../data/i18n_data.json";
-import biographyData from "../../data/biography.json";
 
 const language: Language = "en";
 ---
@@ -15,9 +14,5 @@ const language: Language = "en";
   page={i18nData.biography.title[language]}
   language={language}
 >
-  <BiographyLayout
-    title={i18nData.biography.title[language]}
-    paragraphs={biographyData.content[language]}
-    imageAlt={biographyData.imageAlt[language]}
-  />
+  <BiographyLayout language={language} />
 </BaseLayout>
