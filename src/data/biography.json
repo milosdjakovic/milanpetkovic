@@ -1,7 +1,6 @@
 {
-  "rs": {
-    "title": "Biografija",
-    "content": [
+  "content": {
+    "rs": [
       "Rođen je 31. jula 1973. godine u Prištini, gde je završio osnovnu i srednju školu i Fakultet muzičke umetnosti. Diplomirao je 2003. godine sa temom „Pet pariskih sonata Volfganga Amadeusa Mocarta\".",
       "Prve kompozicije počeo je da piše još u osnovnoj školi, a kao srednjoškolac je počeo da se bavi studijskim radom i od tada datiraju njegovi audio zapisi.",
       "Tokom studija, pored komponovanja, bavio se i pozorištem. Komponovao je muziku za više desetina pozorišnih predstava.",
@@ -11,18 +10,17 @@
       "Živi i radi u Aleksincu kao muzički pedagog.",
       "U godinama koje su usledile, objavio je sledeće albume: \"Utočište\" (2014), \"Nada\" (2015), \"Na obali\" (2016), \"Potvrda o životu\" (2017), \"Leptir\" (2019), \"U srcu\" (2019) i \"Do kraja sveta\" (2019)."
     ],
-    "imageAlt": "Milan Petković svira sintisajzer."
-  },
-  "en": {
-    "title": "Biography",
-    "content": [
+    "en": [
       "Born In Pristina, where he attended elementary and high school along with the Faculty of Musical Arts. He graduated in 2003 with the thesis: \"Five Parish Sonnets by Wolfgang Amadeus Mozart\"",
       "He started composing from a young age, writing his first compositions while still in elementary school, by the time he started going to high school he had already started working in his area of expertise with several audio recordings dating from that time.",
       "During his studies besides composing, he was also engaged in theatre, composing music for several theatre shows. In his creative opus, the theme of experimental or ambient jazz is the most prevalent genre.",
       "His first studio album \"Music Box\" was recorded and published in 2012 with his trio band with publishing rights issued by Center of Culture of Aleksinac and the publishing house \"Listen Loud\" from Zagreb.",
       "In 2013 he founded his own record house \"Green Vortex\" and collaborating with record houses \"Listen Loud\" from Zagreb and  \"Constantinus\" from Nis he released his album  \"Reflection\".",
       "In the years that followed, he released the following albums: \"Shelter\" (2014), \"Hope\" (2015), \"On the Shore\" (2016), \"Confirmation of Life\" (2017), \"Butterfly\" (2019), \"In the Heart\" (2019) and \"Until the end of the world\" (2019)."
-    ],
-    "imageAlt": "Milan Petkovic playing the synthesizer."
+    ]
+  },
+  "imageAlt": {
+    "rs": "Milan Petković svira sintisajzer.",
+    "en": "Milan Petkovic playing the synthesizer."
   }
 }

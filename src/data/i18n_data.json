@@ -45,11 +45,11 @@
       "rs": "Oficijalni YouTube kanal",
       "en": "Official YouTube Channel"
     },
-    "latest_video": {
+    "latestVideo": {
       "rs": "Najnoviji video",
       "en": "Latest video"
     },
-    "all_music_videos": {
+    "allMusicVideos": {
       "rs": "Svi muzički spotovi",
       "en": "All music videos"
     }
@@ -59,13 +59,19 @@
       "rs": "Publikacije",
       "en": "Publications"
     },
-    "latest_article": {
+    "latestArticle": {
       "rs": "Zadnji članak",
       "en": "Zadnji članak"
     },
-    "all_articles": {
+    "allArticles": {
       "rs": "Svi članci",
       "en": "All articles"
+    }
+  },
+  "biography": {
+    "title": {
+      "rs": "Biografija",
+      "en": "Biography"
     }
   }
 }
