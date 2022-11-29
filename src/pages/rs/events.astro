@@ -4,7 +4,6 @@ import type { Language, Locale } from "../../bin/types";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import EventsLayout from "../../layouts/EventsLayout.astro";
 
-import i18nData from "../../data/i18n_data.json";
 import eventsData from "../../data/events.json";
 
 const language: Language = "rs";
@@ -12,11 +11,5 @@ const locale: Locale = "sr-Latn";
 ---
 
 <BaseLayout title="Milan Petković" page="Nastupi" language={language}>
-  <EventsLayout
-    upcomingEventsTitle={i18nData.events.upcoming[language]}
-    noEventsTitle={i18nData.events.none[language]}
-    pastEventsTitle={i18nData.events.past[language]}
-    events={eventsData}
-    locale={locale}
-  />
+  <EventsLayout language={language} events={eventsData} locale={locale} />
 </BaseLayout>

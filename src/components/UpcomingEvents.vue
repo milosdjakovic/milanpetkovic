@@ -1,7 +1,5 @@
 <template>
-  <h2 class="text-3xl text-fluo-green">
-    {{ upcomingEventsExist ? upcomingEventsTitle : noEventsTitle }}
-  </h2>
+  <h2 class="text-3xl text-fluo-green">{{ upcomingEventTitle }}</h2>
 
   <section
     v-if="upcomingEventsExist"
@@ -16,21 +14,28 @@
 </template>
 
 <script setup lang="ts">
-import EventLink from "./EventLink.vue";
-
-import type { EventData, Locale } from "../bin/types";
-import { onMounted, ref } from "vue";
 import { computed } from "@vue/reactivity";
 
-const { upcomingEventsTitle, noEventsTitle, events, locale } = defineProps<{
-  upcomingEventsTitle: string;
-  noEventsTitle: string;
+import EventLink from "./EventLink.vue";
+import { onMounted, ref } from "vue";
+
+import type { EventData, Language, Locale } from "../bin/types";
+
+import i18nData from "../data/i18n_data.json";
+
+const { language, events, locale } = defineProps<{
+  language: Language;
   events: EventData[];
   locale: Locale;
 }>();
 
 const upcomingEvents = ref<EventData[]>([]);
 const upcomingEventsExist = computed(() => upcomingEvents.value.length > 0);
+const upcomingEventTitle = computed(() =>
+  upcomingEventsExist
+    ? i18nData.events.upcoming[language]
+    : i18nData.events.none
+);
 
 function checkForUpcomingEvents(events: EventData[]) {
   return events.filter((event) => {
