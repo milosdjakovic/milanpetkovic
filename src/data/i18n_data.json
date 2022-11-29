@@ -1,15 +1,14 @@
 {
-  "home": {},
   "discography": {
     "title": {
       "rs": "Diskografija",
       "en": "Discography"
     },
-    "subtitle": {
+    "latestRelease": {
       "rs": "Najnovije izdanje",
       "en": "Latest Release"
     },
-    "complete_discography": {
+    "completeDiscography": {
       "rs": "Kompletna diskografija",
       "en": "Complete discography"
     }
