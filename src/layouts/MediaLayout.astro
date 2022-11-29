@@ -1,6 +1,8 @@
 ---
 import type { Language, VideoData } from "../bin/types";
 
+import VideoPlayer from "../components/VideoPlayer.astro";
+
 import i18nData from "../data/i18n_data.json";
 import videoData from "../data/videos.json";
 
@@ -17,206 +19,194 @@ const { language } = Astro.props;
 <div>
   <h1 id="video-title" class="text-2xl">{videos[0].title[language]}</h1>
 
-  <!-- Video -->
-  <div
-    class="relative mt-4"
-    style="width: 100%; height: 0; padding-bottom: 56.25%;"
-  >
-    <iframe
-      id="video-player"
-      width="560"
-      height="315"
-      class="absolute top-0 left-0 w-full h-full"
-      src={videos[0].url}
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
-  </div>
-</div>
+  <VideoPlayer url={videos[0].url} />
 
-<h2 class="mt-8 text-lg font-semibold">{i18nData.media.playlist[language]}</h2>
-<div class="border-b-2 border-x-gray-300"></div>
+  <h2 class="mt-8 text-lg font-semibold">
+    {i18nData.media.playlist[language]}
+  </h2>
+  <div class="border-b-2 border-x-gray-300"></div>
 
-<!-- Playlist -->
-<ul class="mt-4 mb-12">
-  {
-    videos.map((video, i) => (
-      <li>
-        <button
-          class={`video-button ${
-            i === 0 ? "text-fluo-green font-semibold" : ""
-          } flex flex-row-reverse py-2 xl:flex-row sm:py-0 sm:my-2 focus:outline-none text-gray-300 hover:text-white hover:shadow-bottom-fluo`}
-          data-video-id={video.id}
-          data-video-title={video.title[language]}
-          data-video-url={video.url}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="xl:-ml-8 xl:mr-2 icon icon-tabler icon-tabler-volume hidden"
-            width="24"
-            height="24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+  <!-- Playlist -->
+  <ul class="mt-4 mb-12">
+    {
+      videos.map((video, i) => (
+        <li>
+          <button
+            class={`video-button ${
+              i === 0 ? "text-fluo-green font-semibold" : ""
+            } flex flex-row-reverse py-2 xl:flex-row sm:py-0 sm:my-2 focus:outline-none text-gray-300 hover:text-white hover:shadow-bottom-fluo`}
+            data-video-id={video.id}
+            data-video-title={video.title[language]}
+            data-video-url={video.url}
           >
-            <path d="M0 0h24v24H0z" stroke="none" />
-            <path d="M15 8a5 5 0 010 8M17.7 5a9 9 0 010 14M6 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h2l3.5-4.5A.8.8 0 0111 5v14a.8.8 0 01-1.5.5L6 15" />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="xl:-ml-8 xl:mr-2 icon icon-tabler icon-tabler-volume hidden"
+              width="24"
+              height="24"
+              stroke-width="2"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M0 0h24v24H0z" stroke="none" />
+              <path d="M15 8a5 5 0 010 8M17.7 5a9 9 0 010 14M6 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h2l3.5-4.5A.8.8 0 0111 5v14a.8.8 0 01-1.5.5L6 15" />
+            </svg>
 
-          <span class="mr-2 xl:mr-0">{video.title[language]}</span>
-        </button>
-      </li>
-    ))
-  }
-</ul>
+            <span class="mr-2 xl:mr-0">{video.title[language]}</span>
+          </button>
+        </li>
+      ))
+    }
+  </ul>
 
-<!-- Official Youtube Channel Link -->
-<a
-  class="flex items-center link"
-  href="https://www.youtube.com/user/MilanPetkovicTrio/videos"
-  target="_blank"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="w-6 mr-1 icon icon-tabler icon-tabler-brand-youtube"
-    viewBox="0 0 24 24"
-    stroke-width="1.3"
-    stroke="currentColor"
-    fill="none"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+  <!-- Official Youtube Channel Link -->
+  <a
+    class="flex items-center link"
+    href="https://www.youtube.com/user/MilanPetkovicTrio/videos"
+    target="_blank"
   >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <rect x="3" y="5" width="18" height="14" rx="4"></rect>
-    <path d="M10 9l5 3l-5 3z"></path>
-  </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-6 mr-1 icon icon-tabler icon-tabler-brand-youtube"
+      viewBox="0 0 24 24"
+      stroke-width="1.3"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <rect x="3" y="5" width="18" height="14" rx="4"></rect>
+      <path d="M10 9l5 3l-5 3z"></path>
+    </svg>
 
-  {i18nData.media.youtube[language]}
-</a>
+    {i18nData.media.youtube[language]}
+  </a>
 
-<script>
-  const videoTitle: HTMLHeadElement = document.querySelector("#video-title")!;
-  const videoPlayer: HTMLIFrameElement =
-    document.querySelector("#video-player")!;
-  const videoButtons: NodeListOf<HTMLButtonElement> =
-    document.querySelectorAll(".video-button")!;
+  <script>
+    const videoTitle: HTMLHeadElement = document.querySelector("#video-title")!;
+    const videoPlayer: HTMLIFrameElement =
+      document.querySelector("#video-player")!;
+    const videoButtons: NodeListOf<HTMLButtonElement> =
+      document.querySelectorAll(".video-button")!;
 
-  const latestVideoId = videoButtons[0].dataset.videoId ?? "";
-  const latestVideoTitle = videoButtons[0].dataset.videoTitle ?? "";
-  const latestVideoUrl = videoButtons[0].dataset.videoUrl ?? "";
+    const latestVideoId = videoButtons[0].dataset.videoId ?? "";
+    const latestVideoTitle = videoButtons[0].dataset.videoTitle ?? "";
+    const latestVideoUrl = videoButtons[0].dataset.videoUrl ?? "";
 
-  function setVideoIdAsURLQueryParameter(videoId: string = latestVideoId) {
-    const url = new URL(window.location.href);
-    url.searchParams.set("video", encodeURIComponent(videoId));
-    window.history.replaceState(null, "", url);
-  }
+    function setVideoIdAsURLQueryParameter(videoId: string = latestVideoId) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("video", encodeURIComponent(videoId));
+      window.history.replaceState(null, "", url);
+    }
 
-  function getQueryParams(param: string): string {
-    const url: URL = new URL(window.location.href);
-    const params: URLSearchParams = url.searchParams;
-    const videoTitle: string = params.get(param) ?? "";
+    function getQueryParams(param: string): string {
+      const url: URL = new URL(window.location.href);
+      const params: URLSearchParams = url.searchParams;
+      const videoTitle: string = params.get(param) ?? "";
 
-    return decodeURIComponent(videoTitle);
-  }
+      return decodeURIComponent(videoTitle);
+    }
 
-  function getVideoDataBasedOnURLQueryParameter(): {
-    title: string;
-    url: string;
-  } {
-    const videoIdFromQueryParameter = getQueryParams("video");
+    function getVideoDataBasedOnURLQueryParameter(): {
+      title: string;
+      url: string;
+    } {
+      const videoIdFromQueryParameter = getQueryParams("video");
 
-    let matchedVideoTitle = "";
-    let matchedVideoUrl = "";
+      let matchedVideoTitle = "";
+      let matchedVideoUrl = "";
 
-    videoButtons.forEach((videoButton) => {
-      const videoId = videoButton.dataset.videoId;
+      videoButtons.forEach((videoButton) => {
+        const videoId = videoButton.dataset.videoId;
 
-      if (videoId !== videoIdFromQueryParameter) return;
+        if (videoId !== videoIdFromQueryParameter) return;
 
-      matchedVideoTitle = videoButton.dataset.videoTitle ?? latestVideoTitle;
-      matchedVideoUrl = videoButton.dataset.videoUrl ?? latestVideoUrl;
-    });
-
-    return {
-      title: matchedVideoTitle,
-      url: matchedVideoUrl,
-    };
-  }
-
-  function resetPlaylistItemStyles() {
-    videoButtons.forEach((videoButton) => {
-      videoButton.classList.remove("text-fluo-green", "font-semibold");
-      const svgIcon: SVGElement = videoButton.querySelector("svg")!;
-      svgIcon.classList.add("hidden");
-    });
-  }
-
-  function selectVideo(title: string, url: string) {
-    videoTitle.textContent = title;
-    videoPlayer.src = url;
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
-  function initializeUrlQueryParameter() {
-    const videoId: string = getQueryParams("video");
-    if (videoId !== "") return;
-    setVideoIdAsURLQueryParameter(latestVideoId);
-  }
-
-  function setVideoDataBasedOnURLQueryParameters() {
-    const { title, url } = getVideoDataBasedOnURLQueryParameter();
-    selectVideo(title, url);
-  }
-
-  function markSelectedVideoButton(videoButton: HTMLButtonElement) {
-    resetPlaylistItemStyles();
-    videoButton.classList.add("text-fluo-green", "font-semibold");
-
-    const svgIcon: SVGElement = videoButton.querySelector("svg")!;
-    svgIcon?.classList.remove("hidden");
-  }
-
-  function getVideoButtonElementByVideoId(id: string): HTMLButtonElement {
-    let matchedVideoButton: HTMLButtonElement = videoButtons[0];
-
-    videoButtons.forEach((videoButton) => {
-      if (videoButton.dataset.videoId !== id) return;
-      matchedVideoButton = videoButton;
-    });
-
-    return matchedVideoButton;
-  }
-
-  function initializeEventListenerForVideoButton() {
-    videoButtons.forEach((videoButton) => {
-      videoButton.addEventListener("click", () => {
-        markSelectedVideoButton(videoButton);
-
-        selectVideo(
-          videoButton.dataset.videoTitle ?? "",
-          videoButton.dataset.videoUrl ?? ""
-        );
-
-        setVideoIdAsURLQueryParameter(videoButton.dataset.videoId ?? "");
+        matchedVideoTitle = videoButton.dataset.videoTitle ?? latestVideoTitle;
+        matchedVideoUrl = videoButton.dataset.videoUrl ?? latestVideoUrl;
       });
-    });
-  }
 
-  function initializeVideoPlayerState() {
-    const matchedVideoButton = getVideoButtonElementByVideoId(
-      getQueryParams("video")
-    );
-    markSelectedVideoButton(matchedVideoButton);
-    setVideoDataBasedOnURLQueryParameters();
-  }
+      return {
+        title: matchedVideoTitle,
+        url: matchedVideoUrl,
+      };
+    }
 
-  initializeEventListenerForVideoButton();
-  initializeUrlQueryParameter();
-  initializeVideoPlayerState();
-</script>
+    function resetPlaylistItemStyles() {
+      videoButtons.forEach((videoButton) => {
+        videoButton.classList.remove("text-fluo-green", "font-semibold");
+        const svgIcon: SVGElement = videoButton.querySelector("svg")!;
+        svgIcon.classList.add("hidden");
+      });
+    }
+
+    function selectVideo(title: string, url: string) {
+      videoTitle.textContent = title;
+      videoPlayer.src = url;
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+
+    function initializeUrlQueryParameter() {
+      const videoId: string = getQueryParams("video");
+      if (videoId !== "") return;
+      setVideoIdAsURLQueryParameter(latestVideoId);
+    }
+
+    function setVideoDataBasedOnURLQueryParameters() {
+      const { title, url } = getVideoDataBasedOnURLQueryParameter();
+      selectVideo(title, url);
+    }
+
+    function markSelectedVideoButton(videoButton: HTMLButtonElement) {
+      resetPlaylistItemStyles();
+      videoButton.classList.add("text-fluo-green", "font-semibold");
+
+      const svgIcon: SVGElement = videoButton.querySelector("svg")!;
+      svgIcon?.classList.remove("hidden");
+    }
+
+    function getVideoButtonElementByVideoId(id: string): HTMLButtonElement {
+      let matchedVideoButton: HTMLButtonElement = videoButtons[0];
+
+      videoButtons.forEach((videoButton) => {
+        if (videoButton.dataset.videoId !== id) return;
+        matchedVideoButton = videoButton;
+      });
+
+      return matchedVideoButton;
+    }
+
+    function initializeEventListenerForVideoButton() {
+      videoButtons.forEach((videoButton) => {
+        videoButton.addEventListener("click", () => {
+          markSelectedVideoButton(videoButton);
+
+          selectVideo(
+            videoButton.dataset.videoTitle ?? "",
+            videoButton.dataset.videoUrl ?? ""
+          );
+
+          setVideoIdAsURLQueryParameter(videoButton.dataset.videoId ?? "");
+        });
+      });
+    }
+
+    function initializeVideoPlayerState() {
+      const matchedVideoButton = getVideoButtonElementByVideoId(
+        getQueryParams("video")
+      );
+      markSelectedVideoButton(matchedVideoButton);
+      setVideoDataBasedOnURLQueryParameters();
+    }
+
+    initializeEventListenerForVideoButton();
+    initializeUrlQueryParameter();
+    initializeVideoPlayerState();
+  </script>
+</div>
