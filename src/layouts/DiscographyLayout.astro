@@ -1,19 +1,20 @@
 ---
 import type { AlbumData, Language } from "../bin/types";
 
-import discographyData from "../data/discography.json";
-const discography: AlbumData[] = discographyData;
-
 import AlbumList from "../components/AlbumList.astro";
 
+import i18nData from "../data/i18n_data.json";
+import discographyData from "../data/discography.json";
+
+const discography: AlbumData[] = discographyData;
+
 export interface Props {
-  title: string;
   language: Language;
 }
 
-const { title, language } = Astro.props;
+const { language } = Astro.props;
 ---
 
-<h1 class="text-2xl text-center">{title}</h1>
+<h1 class="text-2xl text-center">{i18nData.discography.title[language]}</h1>
 
 <AlbumList language={language} discography={discography} />
