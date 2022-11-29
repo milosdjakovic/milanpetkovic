@@ -7,6 +7,7 @@
     v-if="upcomingEventsExist"
     v-for="event in upcomingEvents"
     :key="event.date + event.link"
+    class="mt-3"
   >
     <EventLink :eventData="event" :locale="locale" />
   </div>
