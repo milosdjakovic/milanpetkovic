@@ -1,10 +1,10 @@
 ---
 import type { AlbumData, Language } from "../bin/types";
+
 import discographyData from "../data/discography.json";
+const discography: AlbumData[] = discographyData;
 
 import AlbumList from "../components/AlbumList.astro";
-
-const discography: AlbumData[] = discographyData;
 
 export interface Props {
   title: string;
