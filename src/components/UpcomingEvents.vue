@@ -3,14 +3,14 @@
     {{ upcomingEventsExist ? upcomingEventsTitle : noEventsTitle }}
   </h2>
 
-  <div
+  <section
     v-if="upcomingEventsExist"
     v-for="event in upcomingEvents"
     :key="event.date + event.link"
     class="mt-3"
   >
     <EventLink :eventData="event" :locale="locale" />
-  </div>
+  </section>
 
   <div class="h-4"></div>
 </template>
