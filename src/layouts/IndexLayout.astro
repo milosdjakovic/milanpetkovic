@@ -1,0 +1,16 @@
+---
+import type { AlbumData, Language } from "../bin/types";
+
+import AlbumList from "../components/AlbumList.astro";
+
+import discographyData from "../data/discography.json";
+const discography: AlbumData[] = discographyData;
+
+export interface Props {
+  language: Language;
+}
+
+const { language } = Astro.props;
+---
+
+<AlbumList language={language} discography={discography} onlyLatest={true} />

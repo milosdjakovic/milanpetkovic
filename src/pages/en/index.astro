@@ -1,14 +1,12 @@
 ---
 import type { AlbumData, Language } from "../../bin/types";
-import AlbumList from "../../components/AlbumList.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-import discographyData from "../../data/discography.json";
-const discography: AlbumData[] = discographyData;
+import IndexLayout from "../../layouts/IndexLayout.astro";
 
 const language: Language = "en";
 ---
 
 <BaseLayout title="Milan Petković" page="Home" language={language}>
-  <AlbumList language={language} discography={discography} onlyLatest={true} />
+  <IndexLayout language={language} />
 </BaseLayout>
