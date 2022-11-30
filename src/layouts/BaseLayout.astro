@@ -33,13 +33,13 @@ const { title, page, language } = Astro.props;
         marginBottom: "calc(100vh - 13rem - 4rem)",
       }}
     >
-      <div
+      <Header title={title} language={language} />
+
+      <page-content
         class="self-center w-full max-w-6xl min-h-screen px-6 pt-16 pb-12 md:pb-20 md:pt-24"
       >
-        <Header title={title} language={language} />
-
         <slot />
-      </div>
+      </page-content>
 
       <div class="flex bg-repeat-x h-52 pb-3">
         <div
@@ -56,8 +56,43 @@ const { title, page, language } = Astro.props;
   <script>
     import { initializeLanguage } from "../bin/language";
     import * as Turbo from "@hotwired/turbo";
+    import { animate, spring } from "motion";
 
-    initializeLanguage();
+    class PageContent extends HTMLElement {
+      constructor() {
+        super();
+
+        // document.addEventListener("turbo:before-fetch-request", (event) => {
+        document.addEventListener("turbo:before-render", (event) => {
+          event.preventDefault();
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+
+          animate(
+            this,
+            { y: -10, opacity: 0 },
+            { duration: 0.15, easing: spring() }
+          );
+
+          setTimeout(() => event?.detail.resume(), 300);
+        });
+
+        document.addEventListener("turbo:load", (event) => {
+          animate(
+            this,
+            { y: [-10, 0], opacity: 1 },
+            { duration: 0.3, easing: spring() }
+          );
+        });
+
+        initializeLanguage();
+      }
+    }
+
+    customElements.define("page-content", PageContent);
   </script>
 </html>
 
