@@ -70,21 +70,13 @@ const { title, page, language } = Astro.props;
             behavior: "smooth",
           });
 
-          animate(
-            this,
-            { y: -10, opacity: 0 },
-            { duration: 0.2, easing: spring() }
-          );
+          animate(this, { opacity: 0 }, { duration: 0.2, easing: spring() });
 
           setTimeout(() => event?.detail.resume(), 200);
         });
 
         document.addEventListener("turbo:load", (event) => {
-          animate(
-            this,
-            { y: [-10, 0], opacity: 1 },
-            { duration: 0.2, easing: spring() }
-          );
+          animate(this, { opacity: 1 }, { duration: 0.2, easing: spring() });
         });
 
         initializeLanguage();
