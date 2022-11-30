@@ -16,12 +16,7 @@ const { language, events, locale } = Astro.props;
 ---
 
 <event-list>
-  <UpcomingEvents
-    language={language}
-    events={events}
-    locale={locale}
-    client:load
-  />
+  <UpcomingEvents language={language} events={events} locale={locale} />
 
   <section id="past-events" class="mt-6 opacity-0">
     <h2 class="text-2xl">{i18nData.events.past[language]}</h2>
