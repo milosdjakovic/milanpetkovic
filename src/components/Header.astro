@@ -17,71 +17,81 @@ const pathname = url.pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 ---
 
-<header
-  class="fixed inset-x-0 top-0 z-30 flex justify-center h-12 md:h-16 border-b-2 border-transparent"
->
-  <div class="flex justify-between w-full max-w-6xl px-6">
-    <a
-      href="/"
-      class="px-4 -ml-4 flex items-center text-lg hover:bg-gray-100/10"
-    >
-      <strong>{title}</strong>
-    </a>
+<dynamic-header>
+  <header
+    class="fixed inset-x-0 top-0 z-30 flex justify-center h-12 md:h-16 border-b-2 border-transparent"
+  >
+    <div class="flex justify-between w-full max-w-6xl px-6">
+      <a
+        href="/"
+        class="px-4 -ml-4 flex items-center text-lg hover:bg-gray-100/10"
+      >
+        <strong>{title}</strong>
+      </a>
 
-    <nav class="hidden lg:flex">
-      {
-        routeData.routes.map((route, i) => {
-          const formattedRoute: string = route ? `${route}/` : "";
-          const path: string = `${language}/${formattedRoute}`;
+      <nav class="hidden lg:flex">
+        {
+          routeData.routes.map((route, i) => {
+            const formattedRoute: string = route ? `${route}/` : "";
+            const path: string = `${language}/${formattedRoute}`;
 
-          return (
-            <a
-              href={`/${path}`}
-              class={currentPath === `${path}` ? "link link__active" : "link"}
-            >
-              <span>{routeData.links[language][i]}</span>
-            </a>
-          );
-        })
-      }
-    </nav>
+            return (
+              <a
+                href={`/${path}`}
+                class={currentPath === `${path}` ? "link link__active" : "link"}
+              >
+                <span>{routeData.links[language][i]}</span>
+              </a>
+            );
+          })
+        }
+      </nav>
 
-    <div class="flex gap-1">
-      <LanguageSwitcher language={language} />
-      <MobileMenu language={language} currentPath={currentPath} />
+      <div class="flex gap-1">
+        <LanguageSwitcher language={language} />
+        <MobileMenu language={language} currentPath={currentPath} />
+      </div>
     </div>
-  </div>
-</header>
+  </header>
+</dynamic-header>
 
 <script>
   import darkLeather from "@images/dark_leather.png";
 
-  const header: HTMLElement = document.querySelector("header")!;
-  let headerStylesUpdated: boolean = false;
+  class DynamicHeader extends HTMLElement {
+    constructor() {
+      super();
 
-  function handleScroll() {
-    const onTop: boolean = window.scrollY === 0;
+      const header: HTMLElement = this.querySelector("header")!;
+      let headerStylesUpdated: boolean = false;
 
-    if (onTop) {
-      header.classList.remove("border-gray-800");
-      header.classList.remove("shadow-2xl");
-      header.style.backgroundImage = `none`;
+      function handleScroll() {
+        const onTop: boolean = window.scrollY === 0;
 
-      headerStylesUpdated = false;
-    }
+        if (onTop) {
+          header.classList.remove("border-gray-800");
+          header.classList.remove("shadow-2xl");
+          header.style.backgroundImage = `none`;
 
-    if (!onTop && !headerStylesUpdated) {
-      header.classList.add("border-gray-800");
-      header.classList.add("shadow-2xl");
-      header.style.backgroundImage = `url(${darkLeather.src})`;
+          headerStylesUpdated = false;
+        }
 
-      headerStylesUpdated = true;
+        if (!onTop && !headerStylesUpdated) {
+          header.classList.add("border-gray-800");
+          header.classList.add("shadow-2xl");
+          header.style.backgroundImage = `url(${darkLeather.src})`;
+
+          headerStylesUpdated = true;
+        }
+      }
+
+      handleScroll();
+
+      window.addEventListener("scroll", handleScroll);
     }
   }
 
-  handleScroll();
-
-  window.addEventListener("scroll", handleScroll);
+  customElements.define("dynamic-header", DynamicHeader);
 </script>
 
 <style>
