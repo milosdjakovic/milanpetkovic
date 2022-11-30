@@ -101,46 +101,59 @@ const { language, currentPath } = Astro.props;
 
       let menuVisible = false;
 
+      function openMenu() {
+        sidePanel.classList.toggle("flex");
+        sidePanel.classList.toggle("hidden");
+        sidePanelBackdrop.classList.remove("hidden");
+
+        setTimeout(() => {
+          sidePanelBackdrop.classList.toggle("opacity-0");
+          sidePanelBackdrop.classList.toggle("opacity-100");
+        }, 10);
+
+        animate(
+          sidePanel,
+          { x: [100, 0], opacity: 1 },
+          { duration: 0.2, easing: spring() }
+        );
+      }
+
+      function closeMenu() {
+        animate(
+          sidePanel,
+          { x: [0, 100], opacity: 0 },
+          { duration: 0.2, easing: spring() }
+        );
+
+        sidePanelBackdrop.classList.toggle("opacity-0");
+        sidePanelBackdrop.classList.toggle("opacity-100");
+
+        setTimeout(() => {
+          sidePanel.classList.toggle("flex");
+          sidePanel.classList.toggle("hidden");
+          sidePanelBackdrop.classList.add("hidden");
+        }, 200);
+      }
+
       function toggleMenu() {
         menuVisible = !menuVisible;
         menuIcon.classList.toggle("hidden");
         xIcon.classList.toggle("hidden");
 
         if (menuVisible) {
-          sidePanel.classList.toggle("flex");
-          sidePanel.classList.toggle("hidden");
-          sidePanelBackdrop.classList.remove("hidden");
-
-          setTimeout(() => {
-            sidePanelBackdrop.classList.toggle("opacity-0");
-            sidePanelBackdrop.classList.toggle("opacity-100");
-          }, 10);
-
-          animate(
-            sidePanel,
-            { x: [100, 0], opacity: 1 },
-            { duration: 0.3, easing: spring() }
-          );
+          openMenu();
         } else {
-          animate(
-            sidePanel,
-            { x: [0, 100], opacity: 0 },
-            { duration: 0.3, easing: spring() }
-          );
-
-          sidePanelBackdrop.classList.toggle("opacity-0");
-          sidePanelBackdrop.classList.toggle("opacity-100");
-
-          setTimeout(() => {
-            sidePanel.classList.toggle("flex");
-            sidePanel.classList.toggle("hidden");
-            sidePanelBackdrop.classList.add("hidden");
-          }, 320);
+          closeMenu();
         }
       }
 
       menuButton.addEventListener("click", toggleMenu);
       sidePanelBackdrop.addEventListener("click", toggleMenu);
+
+      document.addEventListener("turbo:before-visit", () => {
+        if (!menuVisible) return;
+        toggleMenu();
+      });
     }
   }
 

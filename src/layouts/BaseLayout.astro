@@ -62,7 +62,6 @@ const { title, page, language } = Astro.props;
       constructor() {
         super();
 
-        // document.addEventListener("turbo:before-fetch-request", (event) => {
         document.addEventListener("turbo:before-render", (event) => {
           event.preventDefault();
 
@@ -74,17 +73,17 @@ const { title, page, language } = Astro.props;
           animate(
             this,
             { y: -10, opacity: 0 },
-            { duration: 0.15, easing: spring() }
+            { duration: 0.2, easing: spring() }
           );
 
-          setTimeout(() => event?.detail.resume(), 300);
+          setTimeout(() => event?.detail.resume(), 200);
         });
 
         document.addEventListener("turbo:load", (event) => {
           animate(
             this,
             { y: [-10, 0], opacity: 1 },
-            { duration: 0.3, easing: spring() }
+            { duration: 0.2, easing: spring() }
           );
         });
 
