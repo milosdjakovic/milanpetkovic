@@ -1,0 +1,79 @@
+---
+import type { EventData, Language, Locale } from "src/bin/types";
+import EventLink from "./EventLink.astro";
+
+export interface Props {
+  language: Language;
+  events: EventData[];
+  locale: Locale;
+}
+
+const { language, locale, events } = Astro.props;
+
+function checkForUpcomingEvents(events: EventData[]) {
+  return events.filter((event) => {
+    const eventDate = new Date(`${event.date}T${event.time}Z`).getTime();
+
+    const currentDate = Date.now();
+
+    return eventDate > currentDate;
+  });
+}
+
+const upcomingEvents: EventData[] = checkForUpcomingEvents(events);
+---
+
+<upcoming-events
+  class="hidden"
+  data-language={language}
+  data-locale={locale}
+  data-event-data={JSON.stringify(events)}
+>
+  <h2 class="text-3xl text-fluo-green">test</h2>
+
+  {
+    upcomingEvents.map((upcomingEvent) => (
+      <EventLink eventData={upcomingEvent} locale={locale} />
+    ))
+  }
+
+  <div class="h-4"></div>
+</upcoming-events>
+
+<script>
+  import type { Language } from "../bin/types";
+  import i18nData from "../data/i18n_data.json";
+
+  class UpcomingEvents extends HTMLElement {
+    constructor() {
+      super();
+
+      const language: Language = this.dataset.language! as Language;
+
+      const eventLinks: NodeListOf<HTMLAnchorElement> =
+        this.querySelectorAll("a")!;
+
+      let upcomingEventsExist: boolean = eventLinks.length > 0;
+
+      eventLinks.forEach((eventLink) => {
+        const currentTime: number = Date.now();
+        const eventTime: number = parseInt(eventLink.dataset.time!);
+
+        if (currentTime > eventTime) {
+          eventLink.classList.add("hidden");
+        }
+      });
+
+      const upcomingEventTitle = upcomingEventsExist
+        ? i18nData.events.upcoming[language]
+        : i18nData.events.none[language];
+
+      const title: HTMLHeadingElement = this.querySelector("h2")!;
+      title.textContent = upcomingEventTitle;
+
+      this.classList.remove("hidden");
+    }
+  }
+
+  customElements.define("upcoming-events", UpcomingEvents);
+</script>
