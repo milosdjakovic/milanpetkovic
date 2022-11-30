@@ -36,7 +36,12 @@ const { language, locale } = Astro.props;
     {i18nData.discography.latestRelease[language]}
   </h2>
 
-  <AlbumList language={language} discography={discography} onlyLatest={true} />
+  <AlbumList
+    language={language}
+    discography={discography}
+    onlyLatest={true}
+    albumContentCentered={true}
+  />
 
   <a
     href={`discography`}
