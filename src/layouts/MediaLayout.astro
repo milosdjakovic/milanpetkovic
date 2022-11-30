@@ -110,9 +110,9 @@ const { language } = Astro.props;
       function getQueryParams(param: string): string {
         const url: URL = new URL(window.location.href);
         const params: URLSearchParams = url.searchParams;
-        const videoTitle: string = params.get(param) ?? "";
+        const videoID: string = params.get(param) ?? "";
 
-        return decodeURIComponent(videoTitle);
+        return decodeURIComponent(videoID);
       }
 
       function getVideoDataBasedOnURLQueryParameter(): {
