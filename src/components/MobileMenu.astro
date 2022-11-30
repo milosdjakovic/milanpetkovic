@@ -150,7 +150,7 @@ const { language, currentPath } = Astro.props;
       menuButton.addEventListener("click", toggleMenu);
       sidePanelBackdrop.addEventListener("click", toggleMenu);
 
-      document.addEventListener("turbo:before-visit", () => {
+      document.addEventListener("turbo:before-render", () => {
         if (!menuVisible) return;
         toggleMenu();
       });
