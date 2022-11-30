@@ -30,9 +30,10 @@ export interface Props {
   language: Language;
   discography: AlbumData[];
   onlyLatest?: boolean;
+  albumContentCentered?: boolean;
 }
 
-const { language, discography, onlyLatest } = Astro.props;
+const { language, discography, onlyLatest, albumContentCentered } = Astro.props;
 ---
 
 <div class="flex justify-center flex-wrap gap-12 mt-8">
@@ -52,14 +53,28 @@ const { language, discography, onlyLatest } = Astro.props;
               style={{ maxWidth: "20rem" }}
             />
 
-            <ol class="hidden absolute bg-black/60 backdrop-blur-sm lg:block p-4 list-decimal inset-0 list-inside opacity-0 group-hover:opacity-100 ease-in-out transition-opacity duration-200 ">
+            <ol
+              class:list={[
+                {
+                  "text-center": albumContentCentered,
+                  "inset-0": albumContentCentered,
+                  "justify-center": albumContentCentered,
+                },
+                "hidden absolute bg-black/70 backdrop-blur-sm p-8 list-decimal inset-0 list-inside opacity-0 lg:flex lg:flex-col group-hover:opacity-100 ease-in-out transition-opacity duration-200 ",
+              ]}
+            >
               {album[language].songs.map((song) => (
                 <li>{song}</li>
               ))}
             </ol>
           </div>
 
-          <p class="mt-1 text-lg font-semibold">
+          <p
+            class:list={[
+              { "text-center": albumContentCentered },
+              "mt-1 text-lg font-semibold",
+            ]}
+          >
             {album[language].title}
             <span class="-mt-1 text-sm text-gray-300">({album.year})</span>
           </p>
