@@ -13,9 +13,9 @@ const { publication, centered } = Astro.props;
   href={publication.url}
   class={`${
     centered ? "flex flex-col items-center" : "hover:shadow-bottom-fluo"
-  } block mt-8 first:mt-0 group `}
+  } block mt-8 first:mt-0 md:opacity-80 md:hover:opacity-100`}
 >
-  <p class="text-lg max-w-2xl font-semibold group-hover:text-fluo-green">
+  <p class="text-lg max-w-2xl font-semibold">
     {publication.title}
   </p>
 
