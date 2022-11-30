@@ -17,7 +17,6 @@
     "@hotwired/turbo": "^7.2.4",
     "astro": "^1.6.11",
     "motion": "^10.14.3",
-    "tailwindcss": "^3.2.4",
-    "vue": "^3.2.45"
+    "tailwindcss": "^3.2.4"
   }
 }
