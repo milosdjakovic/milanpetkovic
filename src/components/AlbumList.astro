@@ -71,7 +71,7 @@ const { language, discography, onlyLatest, albumContentCentered } = Astro.props;
 
           <p
             class:list={[
-              { "text-center": albumContentCentered },
+              { "lg:text-center text-left": albumContentCentered },
               "mt-1 text-lg font-semibold",
             ]}
           >
@@ -79,7 +79,7 @@ const { language, discography, onlyLatest, albumContentCentered } = Astro.props;
             <span class="-mt-1 text-sm text-gray-300">({album.year})</span>
           </p>
 
-          <ol class="mt-1 border-t-2 pt-1 lg:hidden block list-decimal inset-0 list-inside">
+          <ol class="text-left mt-1 border-t-2 pt-1 lg:hidden block list-decimal inset-0 list-inside">
             {album[language].songs.map((song) => (
               <li>{song}</li>
             ))}
