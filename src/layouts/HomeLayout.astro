@@ -52,8 +52,17 @@ const { language, locale } = Astro.props;
 </div>
 
 <!-- Upcoming events -->
-<div class="mt-16 text-center">
-  <UpcomingEvents language={language} locale={locale} events={eventsData} />
+<div class="flex flex-col items-center">
+  <div class="mt-16 text-center">
+    <UpcomingEvents language={language} locale={locale} events={eventsData} />
+  </div>
+
+  <a
+    href={`events`}
+    class="inline-block mt-6 cursor-pointer text-fluo-green underline opacity-75 hover:opacity-100"
+  >
+    {i18nData.events.all[language]}
+  </a>
 </div>
 
 <!-- Latest video -->
