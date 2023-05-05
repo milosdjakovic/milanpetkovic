@@ -1,7 +1,12 @@
 ---
+import type { Language } from "../bin/types";
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const language: Language = "en";
 ---
 
-<div></div>
+<BaseLayout title="Milan Petković" page="" language={language} />
 
 <script>
   import type { Language } from "../bin/types";
