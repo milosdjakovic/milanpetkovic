@@ -11,6 +11,7 @@ const { publication, centered } = Astro.props;
 
 <a
   href={publication.url}
+  target="_blank"
   class={`${
     centered ? "flex flex-col items-center" : "hover:shadow-bottom-fluo"
   } block mt-8 first:mt-0 md:opacity-80 md:hover:opacity-100`}
