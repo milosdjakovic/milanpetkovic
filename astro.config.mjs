@@ -1,17 +1,10 @@
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
+import sitemap from "@astrojs/sitemap";
+import image from "@astrojs/image";
 
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
-import image from "@astrojs/image";
-
-// https://astro.build/config
-import sitemap from "@astrojs/sitemap";
-
-// https://astro.build/config
 export default defineConfig({
-  // https://docs.astro.build/en/guides/integrations-guide/sitemap/#usage
-  site: 'http://milanpetkovic.com',
-  integrations: [tailwind(), image(), sitemap()]
+  integrations: [sitemap(), image(), tailwind()]
 });

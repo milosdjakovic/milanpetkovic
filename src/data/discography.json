@@ -1,7 +1,35 @@
 [
   {
-    "cover": "leptir",
+    "cover": "kad_niko_ne_ceka",
     "latest": true,
+    "year": "2023",
+    "rs": {
+      "title": "Kad niko ne čeka",
+      "songs": [
+        "Kad niko ne čeka",
+        "Ko je komu sve",
+        "Pesma prijateljstva",
+        "Sama",
+        "Slobodan",
+        "Sumrak",
+        "Vetri"
+      ]
+    },
+    "en": {
+      "title": "When no one is waiting",
+      "songs": [
+        "When no one is waiting",
+        "Who is everything to whom",
+        "Song of friendship",
+        "Alone",
+        "Free",
+        "Twilight",
+        "Winds"
+      ]
+    }
+  },
+  {
+    "cover": "leptir",
     "year": "2019",
     "rs": {
       "title": "Leptir",
@@ -22,7 +50,6 @@
   },
   {
     "cover": "u_srcu",
-    "latest": true,
     "year": "2019",
     "rs": {
       "title": "U srcu",
@@ -45,7 +72,6 @@
   },
   {
     "cover": "do_kraja_sveta",
-    "latest": true,
     "year": "2019",
     "rs": {
       "title": "Do kraja sveta",
